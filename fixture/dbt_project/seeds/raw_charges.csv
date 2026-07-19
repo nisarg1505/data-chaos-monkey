@@ -1,10 +1,10 @@
 charge_id,customer_id,amount,currency,status,created_at
-1,101,49.99,USD,completed,2024-01-01 09:00:00
+1,101,49.99,USD,processing,2024-01-01 09:00:00
 2,102,19.50,USD,completed,2024-01-01 09:05:00
 3,103,120.00,EUR,completed,2024-01-01 09:10:00
 4,101,15.00,USD,refunded,2024-01-01 09:15:00
 5,104,89.99,GBP,completed,2024-01-01 09:20:00
-6,105,49.99,USD,completed,2024-01-01 09:25:00
+6,105,49.99,USD,processing,2024-01-01 09:25:00
 7,102,200.00,EUR,pending,2024-01-01 09:30:00
 8,106,5.00,USD,completed,2024-01-01 09:35:00
 9,103,75.50,GBP,completed,2024-01-01 09:40:00

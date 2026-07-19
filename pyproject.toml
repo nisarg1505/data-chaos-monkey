@@ -17,9 +17,6 @@ dependencies = [
     "sqlglot>=30.12.0",
 ]
 
-[project.scripts]
-chaos-monkey = "chaos_monkey:main"
-
 [build-system]
 requires = ["uv_build>=0.11.29,<0.12.0"]
 build-backend = "uv_build"
@@ -30,3 +27,5 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.15.22",
 ]
+[project.scripts]
+chaos-monkey = "chaos_monkey.cli:cli"
