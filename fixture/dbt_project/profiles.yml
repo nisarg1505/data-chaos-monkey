@@ -1,0 +1,7 @@
+chaos_fixture:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'chaos_fixture.duckdb'
+      threads: 4

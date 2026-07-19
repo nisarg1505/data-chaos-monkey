@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_charges
+    columns:
+      - name: charge_id
+        tests: [not_null, unique]        # GUARDED
+      - name: amount
+        tests: [not_null]                # GUARDED
+      - name: currency
+        tests:
+          - accepted_values:             # GUARDED (only known currencies)
+              values: ['USD', 'EUR', 'GBP']
+      # status:   INTENTIONALLY UNTESTED  <-- enum drift will slip through
+      # customer_id: INTENTIONALLY UNTESTED
+
+  - name: fct_orders
+    columns:
+      - name: order_id
+        tests: [not_null, unique]        # GUARDED
+      # amount_usd: INTENTIONALLY UNTESTED  <-- null from bad currency slips through
+      # status:     INTENTIONALLY UNTESTED
+
+  - name: metric_revenue
+    columns:
+      - name: total_revenue_usd
+        tests: [not_null]                # GUARDED (but won't catch a WRONG-but-non-null number)
