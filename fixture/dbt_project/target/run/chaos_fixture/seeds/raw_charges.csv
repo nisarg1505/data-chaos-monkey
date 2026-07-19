@@ -1,9 +1,7 @@
 
     
     
-    
-    create table "chaos_fixture"."main"."raw_charges" ("charge_id" integer,"customer_id" integer,"amount" float8,"currency" text,"status" text,"created_at" timestamp without time zone)
-  ;
+    truncate table "chaos_fixture"."main"."raw_charges";
     -- dbt seed --
     
           COPY "chaos_fixture"."main"."raw_charges" FROM '/Users/nisarg/data-chaos-monkey/fixture/dbt_project/seeds/raw_charges.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
