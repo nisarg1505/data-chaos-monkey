@@ -3770,3 +3770,1089 @@ select
 [0m17:18:51.334604 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ca88740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e269ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e268530>]}
 [0m17:18:51.334707 [debug] [MainThread]: Flushing usage events
 [0m17:18:51.569273 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:29:53.929293 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094db290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10974bf20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10974bc50>]}
+
+
+============================== 17:29:53.931733 | aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad ==============================
+[0m17:29:53.931733 [info ] [MainThread]: Running with dbt=1.12.0
+[0m17:29:53.931940 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'introspect': 'True', 'fail_fast': 'False', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'version_check': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'invocation_command': 'dbt build --profiles-dir . --target clone', 'log_path': '/Users/nisarg/data-chaos-monkey/fixture/dbt_project/logs', 'use_colors': 'True', 'warn_error': 'None', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'hints_enabled': 'True', 'partial_parse': 'True', 'empty': 'False', 'printer_width': '80', 'profiles_dir': '.', 'target_path': 'None', 'no_print': 'None', 'indirect_selection': 'eager', 'write_json': 'True', 'maximum_seed_size_mib': '1', 'use_experimental_parser': 'False'}
+[0m17:29:54.010704 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075369f0>]}
+[0m17:29:54.030585 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109841940>]}
+[0m17:29:54.031674 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m17:29:54.068421 [debug] [MainThread]: checksum: cdd9222ad04f6935d476b6e07fe4bc9fa4e7770f1498fb6918f6ecd9d2ecb110, vars: {}, profile: chaos_fixture, target: clone, version: 1.12.0
+[0m17:29:54.109860 [info ] [MainThread]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m17:29:54.110067 [debug] [MainThread]: previous checksum: cdd9222ad04f6935d476b6e07fe4bc9fa4e7770f1498fb6918f6ecd9d2ecb110, current checksum: e487ec6d67c1a21f38fa4f6c63beab789252870e8119c58425e4394b4da4e64b
+[0m17:29:54.110169 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m17:29:54.110273 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ce8fe0>]}
+[0m17:29:54.616423 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1c24e0>]}
+[0m17:29:54.647757 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/manifest.json
+[0m17:29:54.649129 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/semantic_manifest.json
+[0m17:29:54.658054 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/osi_document.json
+[0m17:29:54.671126 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a25b920>]}
+[0m17:29:54.671323 [info ] [MainThread]: Found 3 models, 1 seed, 7 data tests, 486 macros
+[0m17:29:54.672170 [info ] [MainThread]: 
+[0m17:29:54.672279 [info ] [MainThread]: Concurrency: 4 threads (target='clone')
+[0m17:29:54.672359 [info ] [MainThread]: 
+[0m17:29:54.672521 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m17:29:54.674118 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_chaos_clone'
+[0m17:29:54.698403 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone"
+[0m17:29:54.698551 [debug] [ThreadPool]: On list_chaos_clone: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "list_chaos_clone"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"chaos_clone"'
+    
+  
+  
+[0m17:29:54.698652 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:29:54.704310 [debug] [ThreadPool]: SQL status: OK in 0.006 seconds
+[0m17:29:54.704757 [debug] [ThreadPool]: On list_chaos_clone: Close
+[0m17:29:54.705022 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_chaos_clone, now create_chaos_clone_main)
+[0m17:29:54.705180 [debug] [ThreadPool]: Creating schema "database: "chaos_clone"
+schema: "main"
+"
+[0m17:29:54.707206 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:29:54.707311 [debug] [ThreadPool]: On create_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "create_chaos_clone_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='chaos_clone'
+        and type='sqlite'
+    
+  
+[0m17:29:54.707391 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:29:54.707817 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:29:54.708233 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:29:54.708314 [debug] [ThreadPool]: On create_chaos_clone_main: BEGIN
+[0m17:29:54.708440 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:29:54.708523 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:29:54.708604 [debug] [ThreadPool]: On create_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "create_chaos_clone_main"} */
+
+    
+    
+        create schema if not exists "chaos_clone"."main"
+    
+[0m17:29:54.708904 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:29:54.709158 [debug] [ThreadPool]: On create_chaos_clone_main: COMMIT
+[0m17:29:54.709257 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:29:54.709339 [debug] [ThreadPool]: On create_chaos_clone_main: COMMIT
+[0m17:29:54.709462 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:29:54.709552 [debug] [ThreadPool]: On create_chaos_clone_main: Close
+[0m17:29:54.710002 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_chaos_clone_main, now list_chaos_clone_main)
+[0m17:29:54.711449 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone_main"
+[0m17:29:54.711537 [debug] [ThreadPool]: On list_chaos_clone_main: BEGIN
+[0m17:29:54.711609 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:29:54.711740 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:29:54.711821 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone_main"
+[0m17:29:54.711906 [debug] [ThreadPool]: On list_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "list_chaos_clone_main"} */
+select
+      'chaos_clone' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'chaos_clone'
+  
+[0m17:29:54.713282 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m17:29:54.713759 [debug] [ThreadPool]: On list_chaos_clone_main: ROLLBACK
+[0m17:29:54.714377 [debug] [ThreadPool]: Failed to rollback 'list_chaos_clone_main'
+[0m17:29:54.714472 [debug] [ThreadPool]: On list_chaos_clone_main: Close
+[0m17:29:54.714820 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a09de80>]}
+[0m17:29:54.714958 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:29:54.715038 [debug] [MainThread]: On master: BEGIN
+[0m17:29:54.715111 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:29:54.715241 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:29:54.715324 [debug] [MainThread]: On master: COMMIT
+[0m17:29:54.715406 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:29:54.715486 [debug] [MainThread]: On master: COMMIT
+[0m17:29:54.715600 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:29:54.715685 [debug] [MainThread]: On master: Close
+[0m17:29:54.716760 [debug] [Thread-1 (]: Began running node seed.chaos_fixture.raw_charges
+[0m17:29:54.716918 [info ] [Thread-1 (]: 1 of 11 START seed file main.raw_charges ....................................... [RUN]
+[0m17:29:54.717066 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_chaos_clone_main, now seed.chaos_fixture.raw_charges)
+[0m17:29:54.717175 [debug] [Thread-1 (]: Began compiling node seed.chaos_fixture.raw_charges
+[0m17:29:54.717279 [debug] [Thread-1 (]: Began executing node seed.chaos_fixture.raw_charges
+[0m17:29:54.725767 [debug] [Thread-1 (]: Using duckdb connection "seed.chaos_fixture.raw_charges"
+[0m17:29:54.725905 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: BEGIN
+[0m17:29:54.726004 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:54.726175 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.726276 [debug] [Thread-1 (]: Using duckdb connection "seed.chaos_fixture.raw_charges"
+[0m17:29:54.726373 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "seed.chaos_fixture.raw_charges"} */
+truncate table "chaos_clone"."main"."raw_charges"
+[0m17:29:54.727251 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.730773 [debug] [Thread-1 (]: Using duckdb connection "seed.chaos_fixture.raw_charges"
+[0m17:29:54.730883 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: 
+          COPY "chaos_clone"."main"."raw_charges" FROM '/Users/nisarg/data-chaos-monkey/fixture/dbt_project/seeds/raw_charges.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
+        ...
+[0m17:29:54.735345 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m17:29:54.736994 [debug] [Thread-1 (]: Writing runtime SQL for node "seed.chaos_fixture.raw_charges"
+[0m17:29:54.741045 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: COMMIT
+[0m17:29:54.741155 [debug] [Thread-1 (]: Using duckdb connection "seed.chaos_fixture.raw_charges"
+[0m17:29:54.741243 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: COMMIT
+[0m17:29:54.741637 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.742276 [debug] [Thread-1 (]: On seed.chaos_fixture.raw_charges: Close
+[0m17:29:54.742980 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a3017f0>]}
+[0m17:29:54.743143 [info ] [Thread-1 (]: 1 of 11 OK loaded seed file main.raw_charges ................................... [[32mINSERT 10[0m in 0.03s]
+[0m17:29:54.743307 [debug] [Thread-1 (]: Finished running node seed.chaos_fixture.raw_charges
+[0m17:29:54.743579 [debug] [Thread-3 (]: Began running node model.chaos_fixture.stg_charges
+[0m17:29:54.743748 [info ] [Thread-3 (]: 2 of 11 START sql view model main.stg_charges .................................. [RUN]
+[0m17:29:54.743911 [debug] [Thread-3 (]: Acquiring new duckdb connection 'model.chaos_fixture.stg_charges'
+[0m17:29:54.744016 [debug] [Thread-3 (]: Began compiling node model.chaos_fixture.stg_charges
+[0m17:29:54.745971 [debug] [Thread-3 (]: Writing injected SQL for node "model.chaos_fixture.stg_charges"
+[0m17:29:54.746171 [debug] [Thread-3 (]: Began executing node model.chaos_fixture.stg_charges
+[0m17:29:54.781195 [debug] [Thread-3 (]: Writing runtime sql for node "model.chaos_fixture.stg_charges"
+[0m17:29:54.781616 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.781720 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: BEGIN
+[0m17:29:54.781810 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m17:29:54.782040 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.782128 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.782218 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+
+  
+  create view "chaos_clone"."main"."stg_charges__dbt_tmp" as (
+    select
+    charge_id,
+    customer_id,
+    amount,
+    currency,
+    status,
+    created_at::timestamp as created_at
+from "chaos_clone"."main"."raw_charges"
+  );
+
+[0m17:29:54.782465 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.784210 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.784311 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+alter view "chaos_clone"."main"."stg_charges" rename to "stg_charges__dbt_backup"
+[0m17:29:54.784663 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.785278 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.785375 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+alter view "chaos_clone"."main"."stg_charges__dbt_tmp" rename to "stg_charges"
+[0m17:29:54.785522 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.786592 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: COMMIT
+[0m17:29:54.786694 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.786781 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: COMMIT
+[0m17:29:54.786990 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.788498 [debug] [Thread-3 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:29:54.788626 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+
+      drop view if exists "chaos_clone"."main"."stg_charges__dbt_backup" cascade
+    
+[0m17:29:54.788854 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.789299 [debug] [Thread-3 (]: On model.chaos_fixture.stg_charges: Close
+[0m17:29:54.789486 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a723410>]}
+[0m17:29:54.789687 [info ] [Thread-3 (]: 2 of 11 OK created sql view model main.stg_charges ............................. [[32mOK[0m in 0.05s]
+[0m17:29:54.789852 [debug] [Thread-3 (]: Finished running node model.chaos_fixture.stg_charges
+[0m17:29:54.790129 [debug] [Thread-2 (]: Began running node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:29:54.790282 [debug] [Thread-1 (]: Began running node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:29:54.790430 [info ] [Thread-2 (]: 3 of 11 START test accepted_values_stg_charges_currency__USD__EUR__GBP ......... [RUN]
+[0m17:29:54.790561 [debug] [Thread-4 (]: Began running node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:29:54.790672 [debug] [Thread-3 (]: Began running node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:29:54.790788 [info ] [Thread-1 (]: 4 of 11 START test not_null_stg_charges_amount ................................. [RUN]
+[0m17:29:54.790972 [debug] [Thread-2 (]: Acquiring new duckdb connection 'test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344'
+[0m17:29:54.791086 [info ] [Thread-4 (]: 5 of 11 START test not_null_stg_charges_charge_id .............................. [RUN]
+[0m17:29:54.791209 [info ] [Thread-3 (]: 6 of 11 START test unique_stg_charges_charge_id ................................ [RUN]
+[0m17:29:54.791364 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly seed.chaos_fixture.raw_charges, now test.chaos_fixture.not_null_stg_charges_amount.85e36b498f)
+[0m17:29:54.791497 [debug] [Thread-2 (]: Began compiling node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:29:54.791651 [debug] [Thread-4 (]: Acquiring new duckdb connection 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f'
+[0m17:29:54.791782 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.chaos_fixture.stg_charges, now test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42)
+[0m17:29:54.791884 [debug] [Thread-1 (]: Began compiling node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:29:54.794053 [debug] [Thread-2 (]: Writing injected SQL for node "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:29:54.794179 [debug] [Thread-4 (]: Began compiling node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:29:54.794284 [debug] [Thread-3 (]: Began compiling node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:29:54.797546 [debug] [Thread-1 (]: Writing injected SQL for node "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:29:54.799487 [debug] [Thread-4 (]: Writing injected SQL for node "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:29:54.801887 [debug] [Thread-3 (]: Writing injected SQL for node "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:29:54.802081 [debug] [Thread-2 (]: Began executing node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:29:54.807705 [debug] [Thread-2 (]: Writing runtime sql for node "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:29:54.807860 [debug] [Thread-1 (]: Began executing node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:29:54.808502 [debug] [Thread-1 (]: Writing runtime sql for node "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:29:54.808627 [debug] [Thread-3 (]: Began executing node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:29:54.808736 [debug] [Thread-4 (]: Began executing node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:29:54.809354 [debug] [Thread-3 (]: Writing runtime sql for node "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:29:54.809881 [debug] [Thread-4 (]: Writing runtime sql for node "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:29:54.810101 [debug] [Thread-1 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:29:54.810223 [debug] [Thread-1 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: BEGIN
+[0m17:29:54.810351 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:29:54.810527 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:54.810656 [debug] [Thread-2 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: BEGIN
+[0m17:29:54.810794 [debug] [Thread-4 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:29:54.810903 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:29:54.811075 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m17:29:54.811192 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: BEGIN
+[0m17:29:54.811303 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.811410 [debug] [Thread-3 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: BEGIN
+[0m17:29:54.811555 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m17:29:54.811661 [debug] [Thread-1 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:29:54.811778 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.811881 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:54.812041 [debug] [Thread-1 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select amount
+from "chaos_clone"."main"."stg_charges"
+where amount is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.812157 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:29:54.812264 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.812465 [debug] [Thread-2 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        currency as value_field,
+        count(*) as n_records
+
+    from "chaos_clone"."main"."stg_charges"
+    group by currency
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'USD','EUR','GBP'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.812579 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.812679 [debug] [Thread-4 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:29:54.812848 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:29:54.813016 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select charge_id
+from "chaos_clone"."main"."stg_charges"
+where charge_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.813163 [debug] [Thread-3 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    charge_id as unique_field,
+    count(*) as n_records
+
+from "chaos_clone"."main"."stg_charges"
+where charge_id is not null
+group by charge_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.813302 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.813523 [debug] [Thread-4 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.815503 [debug] [Thread-1 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: ROLLBACK
+[0m17:29:54.815990 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: ROLLBACK
+[0m17:29:54.816101 [debug] [Thread-2 (]: SQL status: OK in 0.003 seconds
+[0m17:29:54.816240 [debug] [Thread-3 (]: SQL status: OK in 0.003 seconds
+[0m17:29:54.816554 [debug] [Thread-1 (]: Failed to rollback 'test.chaos_fixture.not_null_stg_charges_amount.85e36b498f'
+[0m17:29:54.816839 [debug] [Thread-4 (]: Failed to rollback 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f'
+[0m17:29:54.817348 [debug] [Thread-2 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: ROLLBACK
+[0m17:29:54.817457 [debug] [Thread-1 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: Close
+[0m17:29:54.817850 [debug] [Thread-3 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: ROLLBACK
+[0m17:29:54.817968 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: Close
+[0m17:29:54.818281 [debug] [Thread-2 (]: Failed to rollback 'test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344'
+[0m17:29:54.818492 [info ] [Thread-1 (]: 4 of 11 PASS not_null_stg_charges_amount ....................................... [[32mPASS[0m in 0.03s]
+[0m17:29:54.818801 [debug] [Thread-3 (]: Failed to rollback 'test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42'
+[0m17:29:54.819070 [debug] [Thread-2 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: Close
+[0m17:29:54.818976 [info ] [Thread-4 (]: 5 of 11 PASS not_null_stg_charges_charge_id .................................... [[32mPASS[0m in 0.03s]
+[0m17:29:54.819263 [debug] [Thread-1 (]: Finished running node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:29:54.819370 [debug] [Thread-3 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: Close
+[0m17:29:54.819539 [info ] [Thread-2 (]: 3 of 11 PASS accepted_values_stg_charges_currency__USD__EUR__GBP ............... [[32mPASS[0m in 0.03s]
+[0m17:29:54.819703 [debug] [Thread-4 (]: Finished running node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:29:54.819919 [info ] [Thread-3 (]: 6 of 11 PASS unique_stg_charges_charge_id ...................................... [[32mPASS[0m in 0.03s]
+[0m17:29:54.820082 [debug] [Thread-2 (]: Finished running node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:29:54.820268 [debug] [Thread-3 (]: Finished running node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:29:54.820497 [debug] [Thread-1 (]: Began running node model.chaos_fixture.fct_orders
+[0m17:29:54.820662 [info ] [Thread-1 (]: 7 of 11 START sql table model main.fct_orders .................................. [RUN]
+[0m17:29:54.820854 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.chaos_fixture.not_null_stg_charges_amount.85e36b498f, now model.chaos_fixture.fct_orders)
+[0m17:29:54.820970 [debug] [Thread-1 (]: Began compiling node model.chaos_fixture.fct_orders
+[0m17:29:54.821584 [debug] [Thread-1 (]: Writing injected SQL for node "model.chaos_fixture.fct_orders"
+[0m17:29:54.821846 [debug] [Thread-1 (]: Began executing node model.chaos_fixture.fct_orders
+[0m17:29:54.828221 [debug] [Thread-1 (]: Writing runtime sql for node "model.chaos_fixture.fct_orders"
+[0m17:29:54.828487 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.828589 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: BEGIN
+[0m17:29:54.828695 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:54.828901 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.829014 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.829124 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+
+  
+    
+    
+
+    create  table
+      "chaos_clone"."main"."fct_orders__dbt_tmp"
+  
+    as (
+      select
+    charge_id as order_id,
+    customer_id,
+    amount,
+    currency,
+    -- naive conversion; the point is this depends on `currency` being valid
+    case currency
+        when 'USD' then amount
+        when 'EUR' then amount * 1.08
+        when 'GBP' then amount * 1.27
+    end as amount_usd,
+    status,
+    created_at
+from "chaos_clone"."main"."stg_charges"
+where status = 'completed'
+    );
+  
+  
+[0m17:29:54.830549 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.832318 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.832424 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+
+    SELECT index_name
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'fct_orders'
+  
+[0m17:29:54.832665 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.833090 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.833196 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+
+    SELECT COUNT(*) as remaining_indexes
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'fct_orders'
+  
+[0m17:29:54.833439 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.834260 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.834378 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+alter table "chaos_clone"."main"."fct_orders" rename to "fct_orders__dbt_backup"
+[0m17:29:54.834717 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.835306 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.835399 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+alter table "chaos_clone"."main"."fct_orders__dbt_tmp" rename to "fct_orders"
+[0m17:29:54.835550 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.837259 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: COMMIT
+[0m17:29:54.837368 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.837459 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: COMMIT
+[0m17:29:54.837680 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.838149 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.fct_orders"
+[0m17:29:54.838265 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.fct_orders"} */
+
+      drop table if exists "chaos_clone"."main"."fct_orders__dbt_backup" cascade
+    
+[0m17:29:54.838491 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.838881 [debug] [Thread-1 (]: On model.chaos_fixture.fct_orders: Close
+[0m17:29:54.839045 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a0098e0>]}
+[0m17:29:54.839228 [info ] [Thread-1 (]: 7 of 11 OK created sql table model main.fct_orders ............................. [[32mOK[0m in 0.02s]
+[0m17:29:54.839376 [debug] [Thread-1 (]: Finished running node model.chaos_fixture.fct_orders
+[0m17:29:54.839578 [debug] [Thread-2 (]: Began running node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:29:54.839696 [debug] [Thread-3 (]: Began running node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:29:54.839822 [info ] [Thread-2 (]: 8 of 11 START test not_null_fct_orders_order_id ................................ [RUN]
+[0m17:29:54.839950 [info ] [Thread-3 (]: 9 of 11 START test unique_fct_orders_order_id .................................. [RUN]
+[0m17:29:54.840106 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344, now test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0)
+[0m17:29:54.840246 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42, now test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5)
+[0m17:29:54.840359 [debug] [Thread-2 (]: Began compiling node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:29:54.840452 [debug] [Thread-3 (]: Began compiling node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:29:54.842405 [debug] [Thread-2 (]: Writing injected SQL for node "test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0"
+[0m17:29:54.844153 [debug] [Thread-3 (]: Writing injected SQL for node "test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5"
+[0m17:29:54.844407 [debug] [Thread-2 (]: Began executing node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:29:54.844516 [debug] [Thread-3 (]: Began executing node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:29:54.845005 [debug] [Thread-2 (]: Writing runtime sql for node "test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0"
+[0m17:29:54.845435 [debug] [Thread-3 (]: Writing runtime sql for node "test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5"
+[0m17:29:54.845650 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0"
+[0m17:29:54.845764 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0: BEGIN
+[0m17:29:54.845927 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5"
+[0m17:29:54.846035 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:54.846144 [debug] [Thread-3 (]: On test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5: BEGIN
+[0m17:29:54.846286 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:54.846423 [debug] [Thread-2 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.846529 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0"
+[0m17:29:54.846630 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.846735 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from "chaos_clone"."main"."fct_orders"
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.846836 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5"
+[0m17:29:54.846969 [debug] [Thread-3 (]: On test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from "chaos_clone"."main"."fct_orders"
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.847120 [debug] [Thread-2 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.847592 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0: ROLLBACK
+[0m17:29:54.847725 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m17:29:54.847996 [debug] [Thread-2 (]: Failed to rollback 'test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0'
+[0m17:29:54.848417 [debug] [Thread-3 (]: On test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5: ROLLBACK
+[0m17:29:54.848522 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0: Close
+[0m17:29:54.848807 [debug] [Thread-3 (]: Failed to rollback 'test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5'
+[0m17:29:54.849071 [debug] [Thread-3 (]: On test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5: Close
+[0m17:29:54.848982 [info ] [Thread-2 (]: 8 of 11 PASS not_null_fct_orders_order_id ...................................... [[32mPASS[0m in 0.01s]
+[0m17:29:54.849277 [info ] [Thread-3 (]: 9 of 11 PASS unique_fct_orders_order_id ........................................ [[32mPASS[0m in 0.01s]
+[0m17:29:54.849439 [debug] [Thread-2 (]: Finished running node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:29:54.849591 [debug] [Thread-3 (]: Finished running node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:29:54.849818 [debug] [Thread-1 (]: Began running node model.chaos_fixture.metric_revenue
+[0m17:29:54.849990 [info ] [Thread-1 (]: 10 of 11 START sql table model main.metric_revenue ............................. [RUN]
+[0m17:29:54.850130 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chaos_fixture.fct_orders, now model.chaos_fixture.metric_revenue)
+[0m17:29:54.850230 [debug] [Thread-1 (]: Began compiling node model.chaos_fixture.metric_revenue
+[0m17:29:54.850717 [debug] [Thread-1 (]: Writing injected SQL for node "model.chaos_fixture.metric_revenue"
+[0m17:29:54.850897 [debug] [Thread-1 (]: Began executing node model.chaos_fixture.metric_revenue
+[0m17:29:54.851742 [debug] [Thread-1 (]: Writing runtime sql for node "model.chaos_fixture.metric_revenue"
+[0m17:29:54.851932 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.852027 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: BEGIN
+[0m17:29:54.852112 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:54.852262 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.852362 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.852464 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+
+  
+    
+    
+
+    create  table
+      "chaos_clone"."main"."metric_revenue__dbt_tmp"
+  
+    as (
+      select
+    date_trunc('day', created_at) as day,
+    count(*) as order_count,
+    sum(amount_usd) as total_revenue_usd
+from "chaos_clone"."main"."fct_orders"
+group by 1
+    );
+  
+  
+[0m17:29:54.852960 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.853295 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.853388 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+
+    SELECT index_name
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'metric_revenue'
+  
+[0m17:29:54.853589 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.853963 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.854057 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+
+    SELECT COUNT(*) as remaining_indexes
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'metric_revenue'
+  
+[0m17:29:54.854256 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.854920 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.855030 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+alter table "chaos_clone"."main"."metric_revenue" rename to "metric_revenue__dbt_backup"
+[0m17:29:54.855192 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.855761 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.855924 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+alter table "chaos_clone"."main"."metric_revenue__dbt_tmp" rename to "metric_revenue"
+[0m17:29:54.856080 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.856603 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: COMMIT
+[0m17:29:54.856696 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.856783 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: COMMIT
+[0m17:29:54.856971 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.857403 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.metric_revenue"
+[0m17:29:54.857499 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.metric_revenue"} */
+
+      drop table if exists "chaos_clone"."main"."metric_revenue__dbt_backup" cascade
+    
+[0m17:29:54.857692 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.858091 [debug] [Thread-1 (]: On model.chaos_fixture.metric_revenue: Close
+[0m17:29:54.858234 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aaafe3dc-e1e1-4601-8cdd-3fe81c8495ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108c07740>]}
+[0m17:29:54.858407 [info ] [Thread-1 (]: 10 of 11 OK created sql table model main.metric_revenue ........................ [[32mOK[0m in 0.01s]
+[0m17:29:54.858558 [debug] [Thread-1 (]: Finished running node model.chaos_fixture.metric_revenue
+[0m17:29:54.858754 [debug] [Thread-2 (]: Began running node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:29:54.858890 [info ] [Thread-2 (]: 11 of 11 START test not_null_metric_revenue_total_revenue_usd .................. [RUN]
+[0m17:29:54.859029 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0, now test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815)
+[0m17:29:54.859125 [debug] [Thread-2 (]: Began compiling node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:29:54.861104 [debug] [Thread-2 (]: Writing injected SQL for node "test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815"
+[0m17:29:54.861298 [debug] [Thread-2 (]: Began executing node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:29:54.861854 [debug] [Thread-2 (]: Writing runtime sql for node "test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815"
+[0m17:29:54.862075 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815"
+[0m17:29:54.862179 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815: BEGIN
+[0m17:29:54.862272 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:54.862430 [debug] [Thread-2 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.862524 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815"
+[0m17:29:54.862627 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select total_revenue_usd
+from "chaos_clone"."main"."metric_revenue"
+where total_revenue_usd is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:54.862881 [debug] [Thread-2 (]: SQL status: OK in 0.000 seconds
+[0m17:29:54.863343 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815: ROLLBACK
+[0m17:29:54.863630 [debug] [Thread-2 (]: Failed to rollback 'test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815'
+[0m17:29:54.863726 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815: Close
+[0m17:29:54.863891 [info ] [Thread-2 (]: 11 of 11 PASS not_null_metric_revenue_total_revenue_usd ........................ [[32mPASS[0m in 0.00s]
+[0m17:29:54.864040 [debug] [Thread-2 (]: Finished running node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:29:54.864430 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:29:54.864529 [debug] [MainThread]: On master: BEGIN
+[0m17:29:54.864612 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:29:54.864744 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:29:54.864824 [debug] [MainThread]: On master: COMMIT
+[0m17:29:54.864907 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:29:54.864984 [debug] [MainThread]: On master: COMMIT
+[0m17:29:54.865108 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:29:54.865199 [debug] [MainThread]: On master: Close
+[0m17:29:54.865316 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:29:54.865398 [debug] [MainThread]: Connection 'model.chaos_fixture.metric_revenue' was properly closed.
+[0m17:29:54.865467 [debug] [MainThread]: Connection 'test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5' was properly closed.
+[0m17:29:54.865533 [debug] [MainThread]: Connection 'test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815' was properly closed.
+[0m17:29:54.865596 [debug] [MainThread]: Connection 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f' was properly closed.
+[0m17:29:54.865688 [info ] [MainThread]: 
+[0m17:29:54.865775 [info ] [MainThread]: Finished running 1 seed, 2 table models, 7 data tests, 1 view model in 0 hours 0 minutes and 0.19 seconds (0.19s).
+[0m17:29:54.866260 [debug] [MainThread]: Command end result
+[0m17:29:54.877375 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/manifest.json
+[0m17:29:54.878260 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/semantic_manifest.json
+[0m17:29:54.879056 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/osi_document.json
+[0m17:29:54.881307 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/run_results.json
+[0m17:29:54.881404 [info ] [MainThread]: 
+[0m17:29:54.881501 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:29:54.881582 [info ] [MainThread]: 
+[0m17:29:54.881678 [info ] [MainThread]: Done. PASS=11 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=11
+[0m17:29:54.881882 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 0.9851795, "process_in_blocks": "0", "process_kernel_time": 0.134629, "process_mem_max_rss": "176930816", "process_out_blocks": "0", "process_user_time": 1.318069}
+[0m17:29:54.882011 [debug] [MainThread]: Command `dbt build` succeeded at 17:29:54.881986 after 0.99 seconds
+[0m17:29:54.882112 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10816a1e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073b4f20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a04eab0>]}
+[0m17:29:54.882207 [debug] [MainThread]: Flushing usage events
+[0m17:29:55.169862 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:31:50.793084 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d601a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109e17fe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109e17d10>]}
+
+
+============================== 17:31:50.794872 | 52944720-8e58-4707-baf7-464062a1f311 ==============================
+[0m17:31:50.794872 [info ] [MainThread]: Running with dbt=1.12.0
+[0m17:31:50.795091 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'log_path': '/Users/nisarg/data-chaos-monkey/fixture/dbt_project/logs', 'hints_enabled': 'True', 'fail_fast': 'False', 'printer_width': '80', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'profiles_dir': '.', 'empty': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'debug': 'False', 'write_json': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'version_check': 'True', 'maximum_seed_size_mib': '1', 'use_colors': 'True', 'quiet': 'False', 'warn_error': 'None', 'indirect_selection': 'eager', 'invocation_command': 'dbt build --profiles-dir . --target clone --exclude raw_charges', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m17:31:50.868673 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109f14440>]}
+[0m17:31:50.887927 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10751abd0>]}
+[0m17:31:50.888786 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m17:31:50.923048 [debug] [MainThread]: checksum: cdd9222ad04f6935d476b6e07fe4bc9fa4e7770f1498fb6918f6ecd9d2ecb110, vars: {}, profile: chaos_fixture, target: clone, version: 1.12.0
+[0m17:31:50.970602 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:31:50.970788 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m17:31:50.970882 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:31:50.974519 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a0edc70>]}
+[0m17:31:51.018880 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/manifest.json
+[0m17:31:51.019933 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/semantic_manifest.json
+[0m17:31:51.024880 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/osi_document.json
+[0m17:31:51.031866 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a2533b0>]}
+[0m17:31:51.032036 [info ] [MainThread]: Found 3 models, 1 seed, 7 data tests, 486 macros
+[0m17:31:51.032905 [info ] [MainThread]: 
+[0m17:31:51.033027 [info ] [MainThread]: Concurrency: 4 threads (target='clone')
+[0m17:31:51.033109 [info ] [MainThread]: 
+[0m17:31:51.033283 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m17:31:51.034810 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_chaos_clone'
+[0m17:31:51.076709 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone"
+[0m17:31:51.076889 [debug] [ThreadPool]: On list_chaos_clone: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "list_chaos_clone"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"chaos_clone"'
+    
+  
+  
+[0m17:31:51.076985 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:31:51.081829 [debug] [ThreadPool]: SQL status: OK in 0.005 seconds
+[0m17:31:51.082303 [debug] [ThreadPool]: On list_chaos_clone: Close
+[0m17:31:51.082603 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_chaos_clone, now create_chaos_clone_main)
+[0m17:31:51.082808 [debug] [ThreadPool]: Creating schema "database: "chaos_clone"
+schema: "main"
+"
+[0m17:31:51.085118 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:31:51.085252 [debug] [ThreadPool]: On create_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "create_chaos_clone_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='chaos_clone'
+        and type='sqlite'
+    
+  
+[0m17:31:51.085355 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:31:51.085676 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:31:51.086102 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:31:51.086197 [debug] [ThreadPool]: On create_chaos_clone_main: BEGIN
+[0m17:31:51.086334 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:31:51.086420 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:31:51.086496 [debug] [ThreadPool]: On create_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "create_chaos_clone_main"} */
+
+    
+    
+        create schema if not exists "chaos_clone"."main"
+    
+[0m17:31:51.086637 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:31:51.086880 [debug] [ThreadPool]: On create_chaos_clone_main: COMMIT
+[0m17:31:51.086970 [debug] [ThreadPool]: Using duckdb connection "create_chaos_clone_main"
+[0m17:31:51.087045 [debug] [ThreadPool]: On create_chaos_clone_main: COMMIT
+[0m17:31:51.087168 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:31:51.087252 [debug] [ThreadPool]: On create_chaos_clone_main: Close
+[0m17:31:51.087668 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_chaos_clone_main, now list_chaos_clone_main)
+[0m17:31:51.089174 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone_main"
+[0m17:31:51.089278 [debug] [ThreadPool]: On list_chaos_clone_main: BEGIN
+[0m17:31:51.089356 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:31:51.089513 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m17:31:51.089592 [debug] [ThreadPool]: Using duckdb connection "list_chaos_clone_main"
+[0m17:31:51.089669 [debug] [ThreadPool]: On list_chaos_clone_main: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "connection_name": "list_chaos_clone_main"} */
+select
+      'chaos_clone' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'chaos_clone'
+  
+[0m17:31:51.090787 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m17:31:51.091218 [debug] [ThreadPool]: On list_chaos_clone_main: ROLLBACK
+[0m17:31:51.091614 [debug] [ThreadPool]: Failed to rollback 'list_chaos_clone_main'
+[0m17:31:51.091700 [debug] [ThreadPool]: On list_chaos_clone_main: Close
+[0m17:31:51.092125 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109f48470>]}
+[0m17:31:51.092279 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:31:51.092360 [debug] [MainThread]: On master: BEGIN
+[0m17:31:51.092435 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:31:51.092574 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:31:51.092654 [debug] [MainThread]: On master: COMMIT
+[0m17:31:51.092727 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:31:51.092795 [debug] [MainThread]: On master: COMMIT
+[0m17:31:51.092926 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:31:51.093021 [debug] [MainThread]: On master: Close
+[0m17:31:51.093767 [debug] [Thread-1 (]: Began running node model.chaos_fixture.stg_charges
+[0m17:31:51.093918 [info ] [Thread-1 (]: 1 of 10 START sql view model main.stg_charges .................................. [RUN]
+[0m17:31:51.094056 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_chaos_clone_main, now model.chaos_fixture.stg_charges)
+[0m17:31:51.094155 [debug] [Thread-1 (]: Began compiling node model.chaos_fixture.stg_charges
+[0m17:31:51.096265 [debug] [Thread-1 (]: Writing injected SQL for node "model.chaos_fixture.stg_charges"
+[0m17:31:51.096539 [debug] [Thread-1 (]: Began executing node model.chaos_fixture.stg_charges
+[0m17:31:51.105813 [debug] [Thread-1 (]: Writing runtime sql for node "model.chaos_fixture.stg_charges"
+[0m17:31:51.106048 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.106148 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: BEGIN
+[0m17:31:51.106238 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:31:51.106401 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.106489 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.106583 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+
+  
+  create view "chaos_clone"."main"."stg_charges__dbt_tmp" as (
+    select
+    charge_id,
+    customer_id,
+    amount,
+    currency,
+    status,
+    created_at::timestamp as created_at
+from "chaos_clone"."main"."raw_charges"
+  );
+
+[0m17:31:51.106801 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.108447 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.108560 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+alter view "chaos_clone"."main"."stg_charges" rename to "stg_charges__dbt_backup"
+[0m17:31:51.108727 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.109384 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.109480 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+alter view "chaos_clone"."main"."stg_charges__dbt_tmp" rename to "stg_charges"
+[0m17:31:51.109636 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.113973 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: COMMIT
+[0m17:31:51.114099 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.114202 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: COMMIT
+[0m17:31:51.114592 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.116151 [debug] [Thread-1 (]: Using duckdb connection "model.chaos_fixture.stg_charges"
+[0m17:31:51.116262 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "model.chaos_fixture.stg_charges"} */
+
+      drop view if exists "chaos_clone"."main"."stg_charges__dbt_backup" cascade
+    
+[0m17:31:51.116493 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.117242 [debug] [Thread-1 (]: On model.chaos_fixture.stg_charges: Close
+[0m17:31:51.117770 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '52944720-8e58-4707-baf7-464062a1f311', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a8c5790>]}
+[0m17:31:51.117964 [info ] [Thread-1 (]: 1 of 10 OK created sql view model main.stg_charges ............................. [[32mOK[0m in 0.02s]
+[0m17:31:51.118132 [debug] [Thread-1 (]: Finished running node model.chaos_fixture.stg_charges
+[0m17:31:51.118423 [debug] [Thread-3 (]: Began running node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:31:51.118576 [debug] [Thread-4 (]: Began running node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:31:51.118733 [info ] [Thread-3 (]: 2 of 10 START test accepted_values_stg_charges_currency__USD__EUR__GBP ......... [RUN]
+[0m17:31:51.118867 [debug] [Thread-2 (]: Began running node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:31:51.118988 [debug] [Thread-1 (]: Began running node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:31:51.119112 [info ] [Thread-4 (]: 3 of 10 START test not_null_stg_charges_amount ................................. [RUN]
+[0m17:31:51.119305 [debug] [Thread-3 (]: Acquiring new duckdb connection 'test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344'
+[0m17:31:51.119441 [info ] [Thread-2 (]: 4 of 10 START test not_null_stg_charges_charge_id .............................. [RUN]
+[0m17:31:51.119564 [info ] [Thread-1 (]: 5 of 10 START test unique_stg_charges_charge_id ................................ [RUN]
+[0m17:31:51.119729 [debug] [Thread-4 (]: Acquiring new duckdb connection 'test.chaos_fixture.not_null_stg_charges_amount.85e36b498f'
+[0m17:31:51.119850 [debug] [Thread-3 (]: Began compiling node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:31:51.120007 [debug] [Thread-2 (]: Acquiring new duckdb connection 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f'
+[0m17:31:51.120144 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.chaos_fixture.stg_charges, now test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42)
+[0m17:31:51.120267 [debug] [Thread-4 (]: Began compiling node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:31:51.127915 [debug] [Thread-3 (]: Writing injected SQL for node "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:31:51.128044 [debug] [Thread-2 (]: Began compiling node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:31:51.128161 [debug] [Thread-1 (]: Began compiling node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:31:51.131395 [debug] [Thread-4 (]: Writing injected SQL for node "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:31:51.133278 [debug] [Thread-2 (]: Writing injected SQL for node "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:31:51.135651 [debug] [Thread-1 (]: Writing injected SQL for node "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:31:51.135844 [debug] [Thread-3 (]: Began executing node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:31:51.141286 [debug] [Thread-3 (]: Writing runtime sql for node "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:31:51.141436 [debug] [Thread-2 (]: Began executing node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:31:51.141991 [debug] [Thread-2 (]: Writing runtime sql for node "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:31:51.142126 [debug] [Thread-4 (]: Began executing node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:31:51.142678 [debug] [Thread-4 (]: Writing runtime sql for node "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:31:51.142824 [debug] [Thread-1 (]: Began executing node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:31:51.143329 [debug] [Thread-1 (]: Writing runtime sql for node "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:31:51.143497 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:31:51.143622 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: BEGIN
+[0m17:31:51.143754 [debug] [Thread-4 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:31:51.143870 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m17:31:51.144032 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:31:51.144187 [debug] [Thread-1 (]: Using duckdb connection "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:31:51.144302 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: BEGIN
+[0m17:31:51.144489 [debug] [Thread-3 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: BEGIN
+[0m17:31:51.144604 [debug] [Thread-1 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: BEGIN
+[0m17:31:51.144712 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.144807 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m17:31:51.144912 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m17:31:51.145011 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:31:51.145112 [debug] [Thread-2 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"
+[0m17:31:51.145338 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.145448 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select charge_id
+from "chaos_clone"."main"."stg_charges"
+where charge_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:31:51.145552 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.145651 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.145746 [debug] [Thread-4 (]: Using duckdb connection "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"
+[0m17:31:51.145895 [debug] [Thread-3 (]: Using duckdb connection "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"
+[0m17:31:51.146002 [debug] [Thread-1 (]: Using duckdb connection "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"
+[0m17:31:51.146115 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.not_null_stg_charges_amount.85e36b498f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select amount
+from "chaos_clone"."main"."stg_charges"
+where amount is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:31:51.146225 [debug] [Thread-2 (]: SQL status: OK in 0.000 seconds
+[0m17:31:51.146335 [debug] [Thread-3 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        currency as value_field,
+        count(*) as n_records
+
+    from "chaos_clone"."main"."stg_charges"
+    group by currency
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'USD','EUR','GBP'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:31:51.146452 [debug] [Thread-1 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "chaos_fixture", "target_name": "clone", "node_id": "test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    charge_id as unique_field,
+    count(*) as n_records
+
+from "chaos_clone"."main"."stg_charges"
+where charge_id is not null
+group by charge_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:31:51.147766 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: ROLLBACK
+[0m17:31:51.148142 [debug] [Thread-4 (]: SQL status: OK in 0.002 seconds
+[0m17:31:51.148495 [debug] [Thread-2 (]: Failed to rollback 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f'
+[0m17:31:51.148643 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.148763 [debug] [Thread-2 (]: On test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f: Close
+[0m17:31:51.149239 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: ROLLBACK
+[0m17:31:51.149339 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m17:31:51.149757 [debug] [Thread-1 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: ROLLBACK
+[0m17:31:51.149963 [info ] [Thread-2 (]: 4 of 10 PASS not_null_stg_charges_charge_id .................................... [[32mPASS[0m in 0.03s]
+[0m17:31:51.150274 [debug] [Thread-4 (]: Failed to rollback 'test.chaos_fixture.not_null_stg_charges_amount.85e36b498f'
+[0m17:31:51.150589 [debug] [Thread-1 (]: Failed to rollback 'test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42'
+[0m17:31:51.150954 [debug] [Thread-3 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: ROLLBACK
+[0m17:31:51.151117 [debug] [Thread-2 (]: Finished running node test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f
+[0m17:31:51.151230 [debug] [Thread-4 (]: On test.chaos_fixture.not_null_stg_charges_amount.85e36b498f: Close
+[0m17:31:51.151342 [debug] [Thread-1 (]: On test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42: Close
+[0m17:31:51.151642 [debug] [Thread-3 (]: Failed to rollback 'test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344'
+[0m17:31:51.151873 [error] [Thread-4 (]: 3 of 10 FAIL 3 not_null_stg_charges_amount ..................................... [[31mFAIL 3[0m in 0.03s]
+[0m17:31:51.152173 [debug] [Thread-3 (]: On test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344: Close
+[0m17:31:51.152077 [info ] [Thread-1 (]: 5 of 10 PASS unique_stg_charges_charge_id ...................................... [[32mPASS[0m in 0.03s]
+[0m17:31:51.152361 [debug] [Thread-4 (]: Finished running node test.chaos_fixture.not_null_stg_charges_amount.85e36b498f
+[0m17:31:51.152689 [debug] [Thread-1 (]: Finished running node test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42
+[0m17:31:51.152551 [info ] [Thread-3 (]: 2 of 10 PASS accepted_values_stg_charges_currency__USD__EUR__GBP ............... [[32mPASS[0m in 0.03s]
+[0m17:31:51.152875 [debug] [Thread-7 (]: Marking all children of 'test.chaos_fixture.not_null_stg_charges_amount.85e36b498f' to be skipped because of status 'fail'.  Reason: Got 3 results, configured to fail if != 0.
+[0m17:31:51.153053 [debug] [Thread-3 (]: Finished running node test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344
+[0m17:31:51.153384 [debug] [Thread-2 (]: Began running node model.chaos_fixture.fct_orders
+[0m17:31:51.153535 [info ] [Thread-2 (]: 6 of 10 SKIP relation main.fct_orders .......................................... [[33mSKIP[0m]
+[0m17:31:51.153670 [debug] [Thread-2 (]: Finished running node model.chaos_fixture.fct_orders
+[0m17:31:51.153773 [debug] [Thread-7 (]: Marking all children of 'model.chaos_fixture.fct_orders' to be skipped because of status 'skipped'. 
+[0m17:31:51.153971 [debug] [Thread-1 (]: Began running node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:31:51.154103 [debug] [Thread-3 (]: Began running node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:31:51.154222 [info ] [Thread-1 (]: 7 of 10 SKIP test not_null_fct_orders_order_id ................................. [[33mSKIP[0m]
+[0m17:31:51.154350 [info ] [Thread-3 (]: 8 of 10 SKIP test unique_fct_orders_order_id ................................... [[33mSKIP[0m]
+[0m17:31:51.154474 [debug] [Thread-1 (]: Finished running node test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0
+[0m17:31:51.154588 [debug] [Thread-3 (]: Finished running node test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5
+[0m17:31:51.154697 [debug] [Thread-7 (]: Marking all children of 'test.chaos_fixture.not_null_fct_orders_order_id.4e687af8d0' to be skipped because of status 'skipped'. 
+[0m17:31:51.154819 [debug] [Thread-7 (]: Marking all children of 'test.chaos_fixture.unique_fct_orders_order_id.523ddb6ce5' to be skipped because of status 'skipped'. 
+[0m17:31:51.155006 [debug] [Thread-2 (]: Began running node model.chaos_fixture.metric_revenue
+[0m17:31:51.155141 [info ] [Thread-2 (]: 9 of 10 SKIP relation main.metric_revenue ...................................... [[33mSKIP[0m]
+[0m17:31:51.155262 [debug] [Thread-2 (]: Finished running node model.chaos_fixture.metric_revenue
+[0m17:31:51.155359 [debug] [Thread-7 (]: Marking all children of 'model.chaos_fixture.metric_revenue' to be skipped because of status 'skipped'. 
+[0m17:31:51.155534 [debug] [Thread-1 (]: Began running node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:31:51.155657 [info ] [Thread-1 (]: 10 of 10 SKIP test not_null_metric_revenue_total_revenue_usd ................... [[33mSKIP[0m]
+[0m17:31:51.155771 [debug] [Thread-1 (]: Finished running node test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815
+[0m17:31:51.155869 [debug] [Thread-7 (]: Marking all children of 'test.chaos_fixture.not_null_metric_revenue_total_revenue_usd.48dac67815' to be skipped because of status 'skipped'. 
+[0m17:31:51.156245 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:31:51.156351 [debug] [MainThread]: On master: BEGIN
+[0m17:31:51.156427 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:31:51.156568 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:31:51.156654 [debug] [MainThread]: On master: COMMIT
+[0m17:31:51.156735 [debug] [MainThread]: Using duckdb connection "master"
+[0m17:31:51.156812 [debug] [MainThread]: On master: COMMIT
+[0m17:31:51.156936 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m17:31:51.157033 [debug] [MainThread]: On master: Close
+[0m17:31:51.157157 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:31:51.157233 [debug] [MainThread]: Connection 'test.chaos_fixture.unique_stg_charges_charge_id.1e8db59c42' was properly closed.
+[0m17:31:51.157302 [debug] [MainThread]: Connection 'test.chaos_fixture.accepted_values_stg_charges_currency__USD__EUR__GBP.e7b8d10344' was properly closed.
+[0m17:31:51.157366 [debug] [MainThread]: Connection 'test.chaos_fixture.not_null_stg_charges_amount.85e36b498f' was properly closed.
+[0m17:31:51.157428 [debug] [MainThread]: Connection 'test.chaos_fixture.not_null_stg_charges_charge_id.3b482fc38f' was properly closed.
+[0m17:31:51.157518 [info ] [MainThread]: 
+[0m17:31:51.157609 [info ] [MainThread]: Finished running 2 table models, 7 data tests, 1 view model in 0 hours 0 minutes and 0.12 seconds (0.12s).
+[0m17:31:51.157980 [debug] [MainThread]: Command end result
+[0m17:31:51.169346 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/manifest.json
+[0m17:31:51.170259 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/semantic_manifest.json
+[0m17:31:51.171086 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/osi_document.json
+[0m17:31:51.173540 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nisarg/data-chaos-monkey/fixture/dbt_project/target/run_results.json
+[0m17:31:51.173651 [info ] [MainThread]: 
+[0m17:31:51.173768 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:31:51.173858 [info ] [MainThread]: 
+[0m17:31:51.173964 [error] [MainThread]: [[31mERROR[0m]: in test not_null_stg_charges_amount (models/schema.yml)
+[0m17:31:51.174061 [error] [MainThread]:   Got 3 results, configured to fail if != 0
+[0m17:31:51.174143 [info ] [MainThread]: 
+[0m17:31:51.174242 [info ] [MainThread]:   compiled code at target/compiled/chaos_fixture/models/schema.yml/not_null_stg_charges_amount.sql
+[0m17:31:51.174332 [info ] [MainThread]: 
+[0m17:31:51.174434 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=1 SKIP=5 NO-OP=0 REUSED=0 TOTAL=10
+[0m17:31:51.174648 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": false, "command_wall_clock_time": 0.41169062, "process_in_blocks": "0", "process_kernel_time": 0.114067, "process_mem_max_rss": "159465472", "process_out_blocks": "0", "process_user_time": 0.808185}
+[0m17:31:51.174795 [debug] [MainThread]: Command `dbt build` failed at 17:31:51.174768 after 0.41 seconds
+[0m17:31:51.174905 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109e17e00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d4b260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109d4b4a0>]}
+[0m17:31:51.175007 [debug] [MainThread]: Flushing usage events
+[0m17:31:51.390590 [debug] [MainThread]: An error was encountered while trying to flush usage events

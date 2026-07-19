@@ -1,0 +1,11 @@
+
+    
+    
+    truncate table "chaos_clone"."main"."raw_charges";
+    -- dbt seed --
+    
+          COPY "chaos_clone"."main"."raw_charges" FROM '/Users/nisarg/data-chaos-monkey/fixture/dbt_project/seeds/raw_charges.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
+        
+
+;
+  

@@ -1,4 +1,13 @@
-select
+
+  
+    
+    
+
+    create  table
+      "chaos_clone"."main"."fct_orders__dbt_tmp"
+  
+    as (
+      select
     charge_id as order_id,
     customer_id,
     amount,
@@ -13,3 +22,6 @@ select
     created_at
 from "chaos_clone"."main"."stg_charges"
 where status = 'completed'
+    );
+  
+  

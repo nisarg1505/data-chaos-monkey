@@ -5,3 +5,7 @@ chaos_fixture:
       type: duckdb
       path: 'chaos_fixture.duckdb'
       threads: 4
+    clone:
+      type: duckdb
+      path: '/tmp/chaos_clone.duckdb'
+      threads: 4
