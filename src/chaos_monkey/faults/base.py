@@ -1,5 +1,3 @@
-"""The Fault contract every corruption implements."""
-
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
@@ -14,14 +12,10 @@ class FaultResult:
 
 class Fault(ABC):
     name: str
-    applies_to: set[str]  # column types this fault is valid for
+    applies_to: set[str]
 
     @abstractmethod
-    def apply(self, con, table: str, column: str, severity: float) -> FaultResult:
-        """Mutate ONLY the given table/column in the connected (cloned) db."""
-        ...
+    def apply(self, con, table, column, severity): ...
 
     @abstractmethod
-    def suggested_test(self, column: str) -> str:
-        """The dbt test that WOULD catch this fault."""
-        ...
+    def suggested_test(self, column): ...
