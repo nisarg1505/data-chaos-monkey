@@ -6,6 +6,7 @@ from chaos_monkey.faults import get_fault
 from chaos_monkey.injector import Injector
 from chaos_monkey.runner import Runner
 from chaos_monkey.verdict import classify
+from chaos_monkey.report import build_report, print_report
 
 console = Console()
 
@@ -61,3 +62,10 @@ def run(fault, table, column, severity):
 
 if __name__ == "__main__":
     cli()
+
+
+@cli.command("report")
+def report():
+    """Sweep all faults, score the pipeline's data resilience."""
+    results = build_report()
+    print_report(results)
