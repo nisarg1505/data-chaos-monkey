@@ -1,0 +1,8 @@
+.env
+*.duckdb
+*.pyc
+__pycache__/
+.venv/
+scratch_prove.py
+fixture/dbt_project/target/
+fixture/dbt_project/dbt_packages/
