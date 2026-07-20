@@ -17,27 +17,26 @@ Traditional data testing is static—it only checks what you *thought* to test. 
 
 ## Architecture & Design
 
-```mermaid
 graph TD
     subgraph Source ["Source Database (DuckDB)"]
-        A[Raw JSON & Polymorphic Structs]
+        A["Raw JSON & Polymorphic Structs"]
     end
 
     subgraph CoreEngine ["Data Chaos Monkey Core"]
-        B[Zero-Copy File Cloning] --> C[Polymorphic Fault Injector]
-        C -->|Statistical & Enum Drift| D[Poisoned Storage Layer]
+        B["Zero-Copy File Cloning"] --> C["Polymorphic Fault Injector"]
+        C -->|"Statistical & Enum Drift"| D["Poisoned Storage Layer"]
     end
 
     subgraph Transformation ["Execution Layer"]
-        D --> E[AST-Aware DAG Pruner]
-        E -->|dbt run --select model+| F[Isolated dbt Execution]
+        D --> E["AST-Aware DAG Pruner"]
+        E -->|"dbt run --select model+"| F["Isolated dbt Execution"]
     end
 
     subgraph Verification ["Audit & Verdict"]
-        F --> G[O(1) Checksum Hash Engine]
-        G --> H{Verdict Classifier}
-        H -->|Explicit Failure| I[CAUGHT / CRASHED]
-        H -->|Slips Through| J[SILENT LEAK + dbt Test Fix]
+        F --> G["O(1) Checksum Hash Engine"]
+        G --> H{"Verdict Classifier"}
+        H -->|"Explicit Failure"| I["CAUGHT / CRASHED"]
+        H -->|"Slips Through"| J["SILENT LEAK + dbt Test Fix"]
     end
 
     style Source fill:#0d1117,stroke:#30363d,stroke-width:2px,color:#c9d1d9
@@ -45,20 +44,22 @@ graph TD
     style Transformation fill:#161b22,stroke:#1f6feb,stroke-width:2px,color:#c9d1d9
     style Verification fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
 
-Zero-Copy File Cloning: Safely isolates your source database by cloning the file state instantly before applying mutations, preventing disk bloat.
+1. Zero-Copy File Cloning: Safely isolates your source database by cloning the file state instantly before applying mutations, preventing disk bloat.
 
-AST-Aware DAG Pruning: Dynamically parses your dbt manifest to run only the downstream models affected by the fault (--select model+), reducing redundant compute.
+2. AST-Aware DAG Pruning: Dynamically parses your dbt manifest to run only the downstream models affected by the fault (--select model+), reducing redundant compute.
 
-O(1) Memory Checksums: Pushes cryptographic hashing (SUM(hash())) down to the DuckDB storage layer, ensuring memory usage stays flat regardless of whether you process 800k or 13.2 million rows.
+3. O(1) Memory Checksums: Pushes cryptographic hashing (SUM(hash())) down to the DuckDB storage layer, ensuring memory usage stays flat regardless of whether you process 800k or 13.2 million rows.
 
-Features
-Polymorphic Fault Catalog: Automatically handles deep nested JSON structs and types (statistical_drift for NULL injection, enum_drift for rogue type strings).
+*Features*
 
-Automated Remediation Engine: If a fault reaches production silently, the engine outputs the exact dbt test (not_null, accepted_values) required to patch the leak.
+1. Polymorphic Fault Catalog: Automatically handles deep nested JSON structs and types (statistical_drift for NULL injection, enum_drift for rogue type strings).
 
-Production-Grade Scale: Validated up to 13.2 million rows of deeply nested polymorphic JSON structs with a stable ~2.7GB memory footprint on consumer hardware.
+2. Automated Remediation Engine: If a fault reaches production silently, the engine outputs the exact dbt test (not_null, accepted_values) required to patch the leak.
 
-Installation & Quickstart
+3. Production-Grade Scale: Validated up to 13.2 million rows of deeply nested polymorphic JSON structs with a stable ~2.7GB memory footprint on consumer hardware.
+
+*Installation & Quickstart*
+
 Clone the repository and install dependencies using uv:
 
 Bash
@@ -96,12 +97,14 @@ Plaintext
 Resilience: 8/10 faults caught
 ⚠ 1 reach output SILENTLY:
   • id (statistical_drift) → add not_null test on id
-Verdict Classifications
-CAUGHT: The pipeline or dbt test failed explicitly, successfully blocking the corrupted data from reaching the output table.
 
-CRASHED: The mutation caused a hard type-casting failure during execution, halting the pipeline.
+*Verdict Classifications*
 
-SILENT: The million-dollar bug. The corrupted data slipped through all transformations and tests, reaching the final dashboard undetected without throwing an error.
+1. CAUGHT: The pipeline or dbt test failed explicitly, successfully blocking the corrupted data from reaching the output table.
+
+2. CRASHED: The mutation caused a hard type-casting failure during execution, halting the pipeline.
+
+3. SILENT: The million-dollar bug. The corrupted data slipped through all transformations and tests, reaching the final dashboard undetected without throwing an error.
 
 License
 Distributed under the MIT License. See LICENSE for more information.
