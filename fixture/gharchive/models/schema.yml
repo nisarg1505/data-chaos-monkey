@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  # staging — lightly tested (realistic: teams test the "important" base tables)
+  - name: stg_events
+    columns:
+      - name: event_id
+        tests: [not_null, unique]        # GUARDED
+      - name: event_type
+        tests: [not_null]                # GUARDED
+      - name: actor_login                # UNGUARDED (silent target)
+      - name: repo_name                  # UNGUARDED (silent target)
+      - name: created_at                 # UNGUARDED (silent target)
+
+  - name: stg_push_events
+    columns:
+      - name: event_id
+        tests: [not_null]                # GUARDED
+      - name: commit_count               # UNGUARDED — flows to actor_stats.total_commits
+      - name: branch_ref                 # UNGUARDED
+
+  - name: stg_pr_events
+    columns:
+      - name: event_id                   # UNGUARDED (realistic gap — no test at all)
+      - name: is_merged                  # UNGUARDED
+      - name: pr_number                  # UNGUARDED
+
+  # marts — barely tested (realistic: output tables often lack column tests)
+  - name: repo_activity
+    columns:
+      - name: repo_name
+        tests: [not_null, unique]        # GUARDED
+      - name: total_events               # UNGUARDED
+      - name: unique_contributors        # UNGUARDED
+
+  - name: actor_stats
+    columns:
+      - name: actor_login
+        tests: [unique]                  # GUARDED (but NOT not_null — subtle gap)
+      - name: total_commits              # UNGUARDED — the silent-corruption jackpot
+
+  - name: daily_metrics
+    columns:
+      - name: activity_hour
+        tests: [not_null]                # GUARDED
+      - name: total_events               # UNGUARDED
+      - name: active_users               # UNGUARDED
