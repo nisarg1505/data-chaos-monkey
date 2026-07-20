@@ -11,40 +11,9 @@ Data Chaos Monkey evaluates the integrity of your data pipeline's test suite by 
 
 ---
 
-## Mechanism of Action
-
-Traditional data quality relies on static assertions—testing for what you *expect* to happen. Data Chaos Monkey introduces **active mutation testing** to prove your tests actually catch the *unexpected*.
-
-```mermaid
-graph TD
-    subgraph Source ["Source Database (DuckDB)"]
-        A["Raw JSON & Polymorphic Structs"]
-    end
-
-    subgraph CoreEngine ["Data Chaos Monkey Core"]
-        B["Zero-Copy File Cloning"] --> C["Polymorphic Fault Injector"]
-        C -->|"Statistical & Enum Drift"| D["Poisoned Storage Layer"]
-    end
-
-    subgraph Transformation ["Execution Layer"]
-        D --> E["AST-Aware DAG Pruner"]
-        E -->|"dbt run --select model+"| F["Isolated dbt Execution"]
-    end
-
-    subgraph Verification ["Audit & Verdict"]
-        F --> G["O(1) Checksum Hash Engine"]
-        G --> H{"Verdict Classifier"}
-        H -->|"Explicit Failure"| I["CAUGHT / CRASHED"]
-        H -->|"Slips Through"| J["SILENT LEAK + dbt Test Fix"]
-    end
-
-    style Source fill:#0d1117,stroke:#30363d,stroke-width:2px,color:#c9d1d9
-    style CoreEngine fill:#161b22,stroke:#8957e5,stroke-width:2px,color:#c9d1d9
-    style Transformation fill:#161b22,stroke:#1f6feb,stroke-width:2px,color:#c9d1d9
-    style Verification fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
-```
-
 ### Core Architecture
+
+![Data Chaos Monkey Architecture](architecture.svg)
 
 * **Zero-Copy Isolation:** Database state is cloned at the file level instantly before fault injection, preventing disk bloat and maintaining a pristine source state.
 * **AST-Aware DAG Pruning:** Parses the `manifest.json` to identify the dependency graph. The engine dynamically appends `--select model+` to execute only the downstream nodes affected by the targeted mutation.
