@@ -4,5 +4,9 @@
 __pycache__/
 .venv/
 scratch_prove.py
+logs/
+fixture/logs/
+fixture/dbt_project/logs/
 fixture/dbt_project/target/
 fixture/dbt_project/dbt_packages/
+Gemini_Roadmap.md

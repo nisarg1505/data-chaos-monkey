@@ -4,6 +4,9 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
+import sqlglot
+from sqlglot import exp
+
 
 @dataclass
 class Column:
@@ -68,7 +71,38 @@ def build_guard_map(manifest: dict) -> dict[str, Column]:
     return columns
 
 
+def build_lineage_map(manifest: dict) -> dict[str, list[str]]:
+    """AST-aware mapping of Model -> [Upstream Columns Consumed]."""
+    lineage = {}
+
+    for node in manifest["nodes"].values():
+        if node["resource_type"] != "model":
+            continue
+
+        model_name = node["name"]
+        # Requires compiled SQL (dbt compile) to resolve {{ ref() }} macros
+        sql = node.get("compiled_code")
+        if not sql:
+            continue
+
+        try:
+            # Parse the raw AST using duckdb dialect
+            ast = sqlglot.parse_one(sql, read="duckdb")
+
+            # Extract every column referenced in the SELECT, WHERE, JOINs, etc.
+            # Set comprehension deduplicates the column names.
+            consumed_cols = list({col.name for col in ast.find_all(exp.Column)})
+            lineage[model_name] = consumed_cols
+
+        except sqlglot.errors.ParseError:
+            # Fallback for heavily templated raw queries that break the parser
+            lineage[model_name] = []
+
+    return lineage
+
+
 def load_project(manifest_path: str | Path) -> Project:
     manifest = load_manifest(manifest_path)
     columns = build_guard_map(manifest)
-    return Project(columns=columns)
+    lineage = build_lineage_map(manifest)
+    return Project(columns=columns, lineage=lineage)

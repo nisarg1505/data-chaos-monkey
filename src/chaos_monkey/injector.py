@@ -9,7 +9,20 @@ class Injector:
     def __init__(self, source_db: str, clone_path: str = "/tmp/chaos_clone.duckdb"):
         self.source_db = source_db
         self.clone_path = clone_path
-        self._source_size = Path(source_db).stat().st_size
+
+        # Guarantee all unwritten WAL data is flushed to the main file before we read metadata
+        self._checkpoint_source()
+
+        # st_mtime (modification time) is strictly safer than st_size
+        self._source_mtime = Path(source_db).stat().st_mtime
+
+    def _checkpoint_source(self):
+        """Forces DuckDB to flush the WAL so the single .duckdb file is fully consistent."""
+        con = duckdb.connect(self.source_db)
+        try:
+            con.execute("FORCE CHECKPOINT;")
+        finally:
+            con.close()
 
     def clone(self):
         """Zero-effort clone: copy the db file. Source is never touched."""
@@ -26,5 +39,5 @@ class Injector:
         return result
 
     def verify_source_untouched(self) -> bool:
-        """Safety guarantee: the source file must be byte-identical after a run."""
-        return Path(self.source_db).stat().st_size == self._source_size
+        """Safety guarantee: the source file must not have been modified."""
+        return Path(self.source_db).stat().st_mtime == self._source_mtime
