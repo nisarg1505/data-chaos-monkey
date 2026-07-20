@@ -1,49 +1,46 @@
-"""M6: sweep faults across columns, score the pipeline's resilience."""
+"""H1.3: auto-discover targets, sweep faults, score any project's resilience."""
 
-import duckdb
 from rich.console import Console
 from rich.table import Table
 
-from chaos_monkey.faults import get_fault
+from chaos_monkey.faults import get_fault, applicable_faults
 from chaos_monkey.injector import Injector
 from chaos_monkey.runner import Runner
-from chaos_monkey.verdict import classify
+from chaos_monkey.loader import (
+    select_scope,
+)
+from chaos_monkey.verdict import get_checksum, classify
 
 console = Console()
 
-SRC = "fixture/dbt_project/chaos_fixture.duckdb"
-DBT_DIR = "fixture/dbt_project"
-REVENUE_Q = "SELECT sum(total_revenue_usd) FROM main.metric_revenue"
 
-# The test matrix: (fault, source_column, human_label)
-# Chosen to hit columns that actually flow to output, mixing guarded + unguarded.
-MATRIX = [
-    ("statistical_drift", "amount", "amount nulls"),
-    ("statistical_drift", "charge_id", "charge_id nulls"),
-    ("enum_drift", "status", "status enum drift"),
-    ("enum_drift", "currency", "currency enum drift"),
-]
-
-
-def run_one(fault_name, column, severity=0.3):
-    inj = Injector(SRC)
-    inj.clone()
-    con = duckdb.connect(inj.clone_path)
-    before = con.execute(REVENUE_Q).fetchone()[0]
-    con.close()
-
-    fault = get_fault(fault_name)
-    inj.inject(fault, "main.raw_charges", column, severity)
-    run_result = Runner(DBT_DIR).run()
-    verdict, _ = classify(run_result, inj.clone_path, before, REVENUE_Q)
-    return verdict, fault.suggested_test(column)
-
-
-def build_report():
+def build_report(db_path, dbt_dir, manifest_path, output_table, target_columns):
+    """
+    db_path: the built duckdb file to clone
+    dbt_dir: dbt project dir
+    manifest_path: target/manifest.json
+    output_table: e.g. 'main.daily_metrics' — the table we checksum
+    target_columns: list of (table, column) to attack
+    """
     results = []
-    for fault_name, column, label in MATRIX:
-        verdict, suggested = run_one(fault_name, column)
-        results.append((label, verdict, suggested))
+    for table, column in target_columns:
+        for fault_name in applicable_faults():
+            inj = Injector(db_path)
+            inj.clone()
+            before = get_checksum(inj.clone_path, output_table)
+            fault = get_fault(fault_name)
+            try:
+                inj.inject(fault, table, column, 0.3)
+            except Exception:
+                continue  # fault doesn't apply to this column type
+            scope = select_scope(table)
+            run_result = Runner(dbt_dir).run(select=scope)
+            verdict, _ = classify(run_result, inj.clone_path, before, output_table)
+            if verdict == "NO-OP":
+                continue  # this fault didn't affect this output; skip noise
+            results.append(
+                (f"{column} ({fault_name})", verdict, fault.suggested_test(column))
+            )
     return results
 
 
@@ -66,6 +63,6 @@ def print_report(results):
 
     console.print(f"\n[bold]Resilience: {caught}/{total} faults caught[/]")
     if silent:
-        console.print(f"[red bold]⚠ {len(silent)} faults reach output SILENTLY:[/]")
+        console.print(f"[red bold]⚠ {len(silent)} reach output SILENTLY:[/]")
         for label, _, suggested in silent:
             console.print(f"  • {label} → add {suggested}")

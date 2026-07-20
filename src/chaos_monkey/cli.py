@@ -1,4 +1,5 @@
 import click
+import duckdb
 from rich.console import Console
 from rich.table import Table
 from chaos_monkey.loader import load_project
@@ -72,7 +73,40 @@ if __name__ == "__main__":
 
 
 @cli.command("report")
-def report():
-    """Sweep all faults, score the pipeline's data resilience."""
-    results = build_report()
+@click.option(
+    "--db",
+    required=True,
+    help="built duckdb file, e.g. fixture/gharchive/gharchive.duckdb",
+)
+@click.option("--dbt-dir", required=True, help="e.g. fixture/gharchive")
+@click.option(
+    "--manifest", required=True, help="e.g. fixture/gharchive/target/manifest.json"
+)
+@click.option(
+    "--output", required=True, help="output table to checksum, e.g. main.daily_metrics"
+)
+@click.option(
+    "--inject-into",
+    required=True,
+    help="staging table to corrupt, e.g. main.stg_events",
+)
+def report(db, dbt_dir, manifest, output, inject_into):
+    """Auto-sweep faults across a project's columns; score resilience."""
+
+    # target columns: all columns of the inject_into model (from guard map)
+    schema, tbl = (
+        inject_into.split(".") if "." in inject_into else ("main", inject_into)
+    )
+    con = duckdb.connect(db)
+    cols = [
+        r[0]
+        for r in con.execute(
+            f"SELECT column_name FROM information_schema.columns "
+            f"WHERE table_name = '{tbl}' AND table_schema = '{schema}'"
+        ).fetchall()
+    ]
+    con.close()
+    target_columns = [(inject_into, c) for c in cols]
+
+    results = build_report(db, dbt_dir, manifest, output, target_columns)
     print_report(results)

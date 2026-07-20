@@ -116,3 +116,22 @@ def model_from_table(table: str) -> str:
 def select_scope(table: str) -> str:
     """dbt --select expression: the model + all downstream."""
     return f"{model_from_table(table)}+"
+
+
+def find_output_models(manifest: dict) -> list[str]:
+    """Terminal models: those no other model depends on (DAG leaves)."""
+    all_models = {
+        node["name"]
+        for node in manifest["nodes"].values()
+        if node["resource_type"] == "model"
+    }
+    depended_on = set()
+    for node in manifest["nodes"].values():
+        for dep in node.get("depends_on", {}).get("nodes", []):
+            if (
+                dep in manifest["nodes"]
+                and manifest["nodes"][dep]["resource_type"] == "model"
+            ):
+                depended_on.add(manifest["nodes"][dep]["name"])
+    # outputs = models nobody depends on
+    return sorted(all_models - depended_on)
