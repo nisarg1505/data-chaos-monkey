@@ -1,5 +1,7 @@
 """H1.3: auto-discover targets, sweep faults, score any project's resilience."""
 
+import duckdb
+
 from rich.console import Console
 from rich.table import Table
 from rich.progress import (
@@ -19,13 +21,39 @@ from chaos_monkey.verdict import get_checksum, classify
 
 console = Console()
 
+_NUMERIC = {"BIGINT", "INTEGER", "DOUBLE", "DECIMAL", "FLOAT", "HUGEINT"}
+
+
+def _column_type(db_path, table, column):
+    schema, tbl = table.split(".") if "." in table else ("main", table)
+    con = duckdb.connect(db_path)
+    try:
+        row = con.execute(
+            "SELECT data_type FROM information_schema.columns "
+            "WHERE table_schema = ? AND table_name = ? AND column_name = ?",
+            [schema, tbl, column],
+        ).fetchone()
+        return row[0] if row else None
+    finally:
+        con.close()
+
+
+def _type_family(col_type: str) -> str:
+    base = col_type.split("(")[0].strip()
+    if base in _NUMERIC:
+        return "numeric"
+    if base == "VARCHAR":
+        return "string"
+    if base.startswith("TIMESTAMP") or base == "DATE":
+        return "timestamp"
+    return "other"
+
 
 def build_report(db_path, dbt_dir, manifest_path, output_table, target_columns):
     results = []
     faults = applicable_faults()
     total_tasks = len(target_columns) * len(faults)
 
-    # Initialize the rich progress bar
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
@@ -38,10 +66,23 @@ def build_report(db_path, dbt_dir, manifest_path, output_table, target_columns):
         task_id = progress.add_task("[cyan]Initializing...", total=total_tasks)
 
         for table, column in target_columns:
+            # Per-column: resolve type once, filter faults by family.
+            col_type = _column_type(db_path, table, column)
+            if col_type is None:
+                progress.console.print(
+                    f"[yellow]Skipping {table}.{column}: column not found[/]"
+                )
+                progress.advance(task_id, advance=len(faults))
+                continue
+            allowed = set(applicable_faults(_type_family(col_type)))
+
             for fault_name in faults:
                 progress.update(
                     task_id, description=f"[cyan]Testing {column} ({fault_name})"
                 )
+                if fault_name not in allowed:
+                    progress.advance(task_id)
+                    continue
 
                 inj = Injector(db_path)
                 inj.clone()
@@ -49,23 +90,20 @@ def build_report(db_path, dbt_dir, manifest_path, output_table, target_columns):
                 fault = get_fault(fault_name)
 
                 try:
-                    inj.inject(
-                        fault, table, column, 1.0
-                    )  # Use severity=1.0 for testing
+                    inj.inject(fault, table, column, 1.0)
                 except Exception as e:
-                    # Print errors without breaking the progress bar UI
                     progress.console.print(
                         f"[yellow]Skipping {column} ({fault_name}): {e}[/]"
                     )
                     progress.advance(task_id)
                     continue
 
-                # FIX: Strip 'main.' prefix so dbt can find the model in the DAG
+                # Strip 'main.' prefix so dbt can find the model in the DAG;
+                # exclude the mutated model so dbt doesn't overwrite our chaos.
                 dbt_model_name = table.split(".")[-1]
-                scope = f"{dbt_model_name}+"
-
-                # FIX: Exclude the mutated model so dbt doesn't overwrite our chaos!
-                run_result = Runner(dbt_dir).run(select=scope, exclude=dbt_model_name)
+                run_result = Runner(dbt_dir).run(
+                    select=f"{dbt_model_name}+", exclude=dbt_model_name
+                )
 
                 verdict, _ = classify(run_result, inj.clone_path, before, output_table)
 
@@ -77,8 +115,6 @@ def build_report(db_path, dbt_dir, manifest_path, output_table, target_columns):
                             fault.suggested_test(column),
                         )
                     )
-
-                # Advance the progress bar by 1
                 progress.advance(task_id)
 
     return results

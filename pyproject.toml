@@ -29,3 +29,6 @@ dev = [
 ]
 [project.scripts]
 chaos-monkey = "chaos_monkey.cli:cli"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
