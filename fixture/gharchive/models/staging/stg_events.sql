@@ -1,3 +1,4 @@
+{{ config(materialized='table') }}
 select
     id::bigint              as event_id,
     type                    as event_type,
