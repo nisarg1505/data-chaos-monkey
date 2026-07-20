@@ -7,6 +7,7 @@ from chaos_monkey.injector import Injector
 from chaos_monkey.runner import Runner
 from chaos_monkey.verdict import classify
 from chaos_monkey.report import build_report, print_report
+from chaos_monkey.verdict import get_checksum
 
 console = Console()
 
@@ -38,24 +39,27 @@ def inspect(manifest):
 
 @cli.command("run")
 @click.option("--fault", required=True)
-@click.option("--table", default="main.raw_charges")
+@click.option("--table", default="main.raw_charges", help="source table to corrupt")
 @click.option("--column", required=True)
+@click.option(
+    "--output", required=True, help="output table to check, e.g. main.daily_metrics"
+)
 @click.option("--severity", default=0.3, type=float)
-def run(fault, table, column, severity):
+def run(fault, table, column, output, severity):
     """Inject one fault on a clone, re-run, print the verdict."""
-    import duckdb
-
     inj = Injector(SRC)
     inj.clone()
-    con = duckdb.connect(inj.clone_path)
-    before = con.execute(REVENUE_Q).fetchone()[0]
-    con.close()
+
+    before = get_checksum(inj.clone_path, output)
+
     f = get_fault(fault)
     result = inj.inject(f, table, column, severity)
     console.print(f"injected: {result.description}")
+
     run_result = Runner(DBT_DIR).run()
-    verdict, after = classify(run_result, inj.clone_path, before, REVENUE_Q)
-    console.print(f"revenue: {before} -> {after}")
+    verdict, after = classify(run_result, inj.clone_path, before, output)
+
+    console.print(f"checksum: {before} -> {after}")
     console.print(f"[bold]VERDICT: {verdict}[/]")
     console.print(f"source untouched: {inj.verify_source_untouched()}")
 
