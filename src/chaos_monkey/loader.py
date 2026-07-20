@@ -106,3 +106,13 @@ def load_project(manifest_path: str | Path) -> Project:
     columns = build_guard_map(manifest)
     lineage = build_lineage_map(manifest)
     return Project(columns=columns, lineage=lineage)
+
+
+def model_from_table(table: str) -> str:
+    """'main.stg_events' -> 'stg_events' (strip schema qualifier)."""
+    return table.split(".")[-1]
+
+
+def select_scope(table: str) -> str:
+    """dbt --select expression: the model + all downstream."""
+    return f"{model_from_table(table)}+"

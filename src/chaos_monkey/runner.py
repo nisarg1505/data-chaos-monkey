@@ -1,4 +1,4 @@
-"""M4: re-run the dbt pipeline against the corrupted clone, capture results."""
+"""M4 / H1.2: re-run the pipeline, scoped to only affected models."""
 
 import json
 import subprocess
@@ -10,27 +10,27 @@ class Runner:
         self.dbt_dir = dbt_dir
         self.target = target
 
-    def run(self):
-        """Rebuild models + tests on the clone. --exclude the seed so the
-        injected corruption in the source table survives (dbt build re-seeds
-        from the clean CSV otherwise)."""
-        subprocess.run(
-            [
-                "uv",
-                "run",
-                "dbt",
-                "build",
-                "--profiles-dir",
-                ".",
-                "--target",
-                self.target,
-                "--exclude",
-                "raw_charges",
-            ],
-            cwd=self.dbt_dir,
-            capture_output=True,
-            text=True,
-        )
+    def run(self, select: str | None = None, exclude_seed: bool = True):
+        """Rebuild models + tests on the clone.
+        select: dbt --select expression (e.g. 'stg_events+') to prune the DAG.
+                None = build everything (fallback).
+        exclude_seed: skip seeds so injected corruption in source tables survives.
+        """
+        cmd = [
+            "uv",
+            "run",
+            "dbt",
+            "build",
+            "--profiles-dir",
+            ".",
+            "--target",
+            self.target,
+        ]
+        if select:
+            cmd += ["--select", select]
+        if exclude_seed:
+            cmd += ["--exclude", "resource_type:seed"]
+        subprocess.run(cmd, cwd=self.dbt_dir, capture_output=True, text=True)
         return self._parse_results()
 
     def _parse_results(self):

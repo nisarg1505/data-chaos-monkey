@@ -8,6 +8,7 @@ from chaos_monkey.runner import Runner
 from chaos_monkey.verdict import classify
 from chaos_monkey.report import build_report, print_report
 from chaos_monkey.verdict import get_checksum
+from chaos_monkey.loader import select_scope
 
 console = Console()
 
@@ -56,7 +57,9 @@ def run(fault, table, column, output, severity):
     result = inj.inject(f, table, column, severity)
     console.print(f"injected: {result.description}")
 
-    run_result = Runner(DBT_DIR).run()
+    scope = select_scope(table)  # e.g. 'stg_events+'
+    run_result = Runner(DBT_DIR).run(select=scope)
+
     verdict, after = classify(run_result, inj.clone_path, before, output)
 
     console.print(f"checksum: {before} -> {after}")
