@@ -1,19 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 520">
   <defs>
     <style>
       .bg { fill: #FCFBF9; }
-      .main-title { font-family: "Georgia", serif; font-size: 24px; fill: #111; letter-spacing: 0.5px; font-weight: bold; }
-      .sub-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; fill: #666; font-weight: 300; }
-      .plane-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; fill: #999; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-      .group-title { font-family: "Georgia", serif; font-size: 14px; fill: #333; font-style: italic; }
-      .node-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 600; fill: #222; }
-      .node-desc { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; fill: #555; }
-      .code-bg { fill: #ffffff; stroke: none; rx: 3; }
-      .code-text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 10px; fill: #333; }
-      .micro-text { font-family: "SFMono-Regular", Consolas, monospace; font-size: 9px; fill: #777; }
+      .main-title { font-family: "Georgia", serif; font-size: 24px; fill: #111; font-weight: bold; }
+      .sub-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; fill: #666; font-weight: 400; }
+      .plane-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; fill: #999; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+      
+      .group-title { font-family: "Georgia", serif; font-size: 14px; fill: #444; font-style: italic; }
+      .node-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; font-weight: 600; fill: #111; }
+      .node-desc { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; fill: #666; }
+      
+      .code-bg { stroke: none; rx: 4; }
+      .code-text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 11px; fill: #333; }
+      .badge-text { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 10px; font-weight: bold; }
+      
       .line { stroke: #A3A09A; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
       .line-dashed { stroke: #A3A09A; stroke-width: 1.5; fill: none; stroke-dasharray: 4, 4; marker-end: url(#arrow); }
-      .line-label { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; fill: #666; font-weight: 500; }
+      .line-label { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; fill: #777; font-weight: 500; font-style: italic; }
     </style>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <polyline points="2,2 6,5 2,8" fill="none" stroke="#A3A09A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,146 +25,149 @@
 
   <!-- Background & Header -->
   <rect width="100%" height="100%" class="bg" />
-  <text x="30" y="45" class="main-title">Data Chaos Monkey Architecture</text>
-  <text x="30" y="65" class="sub-title">Internal mechanisms: AST DAG Pruning, Zero-Copy Isolation, and O(1) Checksums</text>
-  <line x1="30" y1="80" x2="970" y2="80" stroke="#EAE8E4" stroke-width="1" />
+  <text x="40" y="50" class="main-title">Data Chaos Monkey Architecture</text>
+  <text x="40" y="75" class="sub-title">Internal mechanisms: AST DAG Pruning, Zero-Copy Isolation, and O(1) Checksums</text>
+  <line x1="40" y1="95" x2="980" y2="95" stroke="#EAE8E4" stroke-width="1" />
 
   <!-- Plane Dividers -->
-  <text x="30" y="110" class="plane-title">Control Plane / Metadata</text>
-  <line x1="30" y1="250" x2="970" y2="250" stroke="#EAE8E4" stroke-width="1" stroke-dasharray="2,2" />
-  <text x="30" y="270" class="plane-title">Data Plane / Storage</text>
+  <text x="40" y="125" class="plane-title">Control Plane / Metadata</text>
+  <line x1="40" y1="290" x2="980" y2="290" stroke="#EAE8E4" stroke-width="1" stroke-dasharray="2,2" />
+  <text x="40" y="325" class="plane-title">Data Plane / Storage</text>
 
-  <!-- ==================== COLUMN 1: INPUTS ==================== -->
+
+  <!-- ==================== COLUMN 1 ==================== -->
   
   <!-- Manifest (Control) -->
-  <g transform="translate(30, 130)">
-    <rect width="180" height="90" fill="#FFFFFF" stroke="#E5E3DF" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">dbt Manifest</text>
-    <text x="15" y="45" class="node-title">manifest.json</text>
-    <rect x="15" y="60" width="150" height="16" class="code-bg" fill="#F6F6F6" />
-    <text x="25" y="71" class="micro-text">{"nodes": {...}, "edges": [...]}</text>
+  <g transform="translate(40, 140)">
+    <rect width="210" height="130" fill="#FFFFFF" stroke="#E5E3DF" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">dbt Manifest</text>
+    <text x="20" y="55" class="node-title">manifest.json</text>
+    <text x="20" y="75" class="node-desc">Compiled pipeline graph</text>
+    
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#F6F6F6" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">{"nodes": {...}, "edges": []}</text>
   </g>
 
   <!-- Source DB (Data) -->
-  <g transform="translate(30, 290)">
-    <rect width="180" height="110" fill="#FFFFFF" stroke="#E5E3DF" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">Source Storage</text>
-    <text x="15" y="45" class="node-title">DuckDB Production</text>
-    <text x="15" y="60" class="node-desc">Physical immutable state</text>
-    <rect x="15" y="75" width="150" height="20" class="code-bg" fill="#F6F6F6" />
-    <text x="90" y="88" class="code-text" text-anchor="middle">data_prod.duckdb</text>
+  <g transform="translate(40, 340)">
+    <rect width="210" height="130" fill="#FFFFFF" stroke="#E5E3DF" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">Source Storage</text>
+    <text x="20" y="55" class="node-title">DuckDB Production</text>
+    <text x="20" y="75" class="node-desc">Physical immutable state</text>
+    
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#F6F6F6" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">data_production.duckdb</text>
   </g>
 
 
-  <!-- ==================== COLUMN 2: ENGINE CORE ==================== -->
+  <!-- ==================== COLUMN 2 ==================== -->
 
-  <!-- AST Pruner (Control) - Anthropic Slate -->
-  <g transform="translate(270, 130)">
-    <rect width="190" height="105" fill="#F3F6F9" stroke="#D5E0EA" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">AST-Aware Pruner</text>
-    <text x="15" y="45" class="node-title">DAG Subgraph Extractor</text>
-    <text x="15" y="60" class="node-desc">Identifies downstream blast radius</text>
+  <!-- AST Pruner (Control) - Slate -->
+  <g transform="translate(280, 140)">
+    <rect width="210" height="130" fill="#F3F6F9" stroke="#D5E0EA" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">AST-Aware Pruner</text>
+    <text x="20" y="55" class="node-title">DAG Subgraph Extractor</text>
+    <text x="20" y="75" class="node-desc">Isolates blast radius models</text>
     
-    <rect x="15" y="75" width="160" height="16" class="code-bg" fill="#E2E9F0" />
-    <text x="95" y="86" class="micro-text" text-anchor="middle">target_node = '--select model+'</text>
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#E2E9F0" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">target = '--select model+'</text>
   </g>
 
-  <!-- Zero Copy Clone (Data) - Anthropic Slate -->
-  <g transform="translate(270, 290)">
-    <rect width="190" height="110" fill="#F3F6F9" stroke="#D5E0EA" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">State Isolation</text>
-    <text x="15" y="45" class="node-title">Zero-Copy OS Clone</text>
-    <text x="15" y="60" class="node-desc">O(1) time complexity duplication</text>
+  <!-- Zero Copy (Data) - Slate -->
+  <g transform="translate(280, 340)">
+    <rect width="210" height="130" fill="#F3F6F9" stroke="#D5E0EA" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">State Isolation</text>
+    <text x="20" y="55" class="node-title">Zero-Copy OS Clone</text>
+    <text x="20" y="75" class="node-desc">O(1) complexity duplication</text>
     
-    <rect x="15" y="75" width="160" height="20" class="code-bg" fill="#E2E9F0" />
-    <text x="95" y="88" class="micro-text" text-anchor="middle">shutil.copyfile() / Hardlink</text>
-  </g>
-
-
-  <!-- ==================== COLUMN 3: MUTATION & EXECUTION ==================== -->
-
-  <!-- Isolated Execution (Control/Compute) - Anthropic Peach -->
-  <g transform="translate(520, 130)">
-    <rect width="200" height="105" fill="#FDF5ED" stroke="#F0DDC7" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">Isolated dbt Execution</text>
-    <text x="15" y="45" class="node-title">Subprocess Orchestrator</text>
-    <text x="15" y="60" class="node-desc">Runs transformations on bad data</text>
-    <rect x="15" y="75" width="170" height="16" class="code-bg" fill="#F4E8DC" />
-    <text x="100" y="86" class="code-text" text-anchor="middle">dbt run --select model+</text>
-  </g>
-
-  <!-- Polymorphic Injector (Data) - Anthropic Peach -->
-  <g transform="translate(520, 290)">
-    <rect width="200" height="130" fill="#FDF5ED" stroke="#F0DDC7" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">Polymorphic Injector</text>
-    <text x="15" y="45" class="node-title">Schema &amp; Data Mutator</text>
-    <text x="15" y="60" class="node-desc">Dynamically overwrites JSON vectors</text>
-    
-    <rect x="15" y="75" width="170" height="40" class="code-bg" fill="#F4E8DC" />
-    <text x="25" y="88" class="micro-text">1. enum_drift (Rogue typing)</text>
-    <text x="25" y="103" class="micro-text">2. statistical_drift (Nulls)</text>
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#E2E9F0" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">shutil.copyfile(src, dst)</text>
   </g>
 
 
-  <!-- ==================== COLUMN 4: VERIFICATION ==================== -->
+  <!-- ==================== COLUMN 3 ==================== -->
 
-  <!-- Verdict (Control) - Anthropic Sage -->
-  <g transform="translate(770, 130)">
-    <rect width="200" height="105" fill="#F2F7F4" stroke="#D2E3D8" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">Resilience Engine</text>
-    <text x="15" y="45" class="node-title">Verdict Classifier</text>
+  <!-- Isolated Execution (Control) - Peach -->
+  <g transform="translate(520, 140)">
+    <rect width="210" height="130" fill="#FDF5ED" stroke="#F0DDC7" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">Isolated Execution</text>
+    <text x="20" y="55" class="node-title">Subprocess Orchestrator</text>
+    <text x="20" y="75" class="node-desc">Triggers dbt pipeline engine</text>
     
-    <rect x="15" y="65" width="50" height="18" class="code-bg" fill="#DDF0E3" />
-    <text x="40" y="77" class="code-text" fill="#296342" text-anchor="middle">CAUGHT</text>
-    
-    <rect x="70" y="65" width="55" height="18" class="code-bg" fill="#FCE8E8" />
-    <text x="97.5" y="77" class="code-text" fill="#992C2C" text-anchor="middle">CRASHED</text>
-    
-    <rect x="130" y="65" width="55" height="18" class="code-bg" fill="#FDF3E1" />
-    <text x="157.5" y="77" class="code-text" fill="#915B14" text-anchor="middle">SILENT</text>
-
-    <text x="15" y="100" class="micro-text" fill="#444">Returns missing dbt constraints</text>
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#F4E8DC" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">dbt run --select target</text>
   </g>
 
-  <!-- Hash Checksum (Data) - Anthropic Sage -->
-  <g transform="translate(770, 290)">
-    <rect width="200" height="110" fill="#F2F7F4" stroke="#D2E3D8" stroke-width="1" rx="4"/>
-    <text x="15" y="25" class="group-title">O(1) Verification</text>
-    <text x="15" y="45" class="node-title">Hash Checksum Engine</text>
-    <text x="15" y="60" class="node-desc">Constant memory evaluation</text>
+  <!-- Polymorphic Injector (Data) - Peach -->
+  <g transform="translate(520, 340)">
+    <rect width="210" height="130" fill="#FDF5ED" stroke="#F0DDC7" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">Polymorphic Injector</text>
+    <text x="20" y="55" class="node-title">Schema &amp; Data Mutator</text>
+    <text x="20" y="75" class="node-desc">Overwrites nested JSON structs</text>
     
-    <rect x="15" y="75" width="170" height="20" class="code-bg" fill="#E6F0EB" />
-    <text x="100" y="88" class="micro-text" text-anchor="middle">SELECT SUM(hash(CAST(..)))</text>
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#F4E8DC" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">[enum_drift, statistical_drift]</text>
+  </g>
+
+
+  <!-- ==================== COLUMN 4 ==================== -->
+
+  <!-- Verdict (Control) - Sage -->
+  <g transform="translate(760, 140)">
+    <rect width="210" height="130" fill="#F2F7F4" stroke="#D2E3D8" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">Resilience Engine</text>
+    <text x="20" y="55" class="node-title">Verdict Classifier</text>
+    <text x="20" y="75" class="node-desc">Identifies silent data leaks</text>
+    
+    <!-- 3 Perfectly centered micro-badges -->
+    <rect x="20" y="90" width="54" height="24" class="code-bg" fill="#DDF0E3" />
+    <text x="47" y="103" class="badge-text" fill="#296342" text-anchor="middle" dominant-baseline="middle">CAUGHT</text>
+    
+    <rect x="78" y="90" width="54" height="24" class="code-bg" fill="#FCE8E8" />
+    <text x="105" y="103" class="badge-text" fill="#992C2C" text-anchor="middle" dominant-baseline="middle">CRASHED</text>
+    
+    <rect x="136" y="90" width="54" height="24" class="code-bg" fill="#FDF3E1" />
+    <text x="163" y="103" class="badge-text" fill="#915B14" text-anchor="middle" dominant-baseline="middle">SILENT</text>
+  </g>
+
+  <!-- Hash Checksum (Data) - Sage -->
+  <g transform="translate(760, 340)">
+    <rect width="210" height="130" fill="#F2F7F4" stroke="#D2E3D8" stroke-width="1" rx="6"/>
+    <text x="20" y="32" class="group-title">O(1) Verification</text>
+    <text x="20" y="55" class="node-title">Hash Checksum Engine</text>
+    <text x="20" y="75" class="node-desc">Memory-bound storage eval</text>
+    
+    <rect x="20" y="90" width="170" height="24" class="code-bg" fill="#E6F0EB" />
+    <text x="105" y="103" class="code-text" text-anchor="middle" dominant-baseline="middle">SUM(hash(CAST(..)))</text>
   </g>
 
 
   <!-- ==================== WIRING / ARROWS ==================== -->
   
-  <!-- Control Plane Routing -->
-  <path d="M 210 175 L 265 175" class="line-dashed" />
-  <text x="237" y="165" class="line-label" text-anchor="middle">Parses</text>
+  <!-- Control Plane Routing (Y=205) -->
+  <path d="M 250 205 L 274 205" class="line-dashed" />
+  <text x="265" y="195" class="line-label" text-anchor="middle">Parses</text>
 
-  <path d="M 460 175 L 515 175" class="line-dashed" />
-  <text x="487" y="165" class="line-label" text-anchor="middle">Triggers</text>
+  <path d="M 490 205 L 514 205" class="line-dashed" />
+  <text x="502" y="195" class="line-label" text-anchor="middle">Targets</text>
 
-  <path d="M 720 175 L 765 175" class="line-dashed" />
-  <text x="742" y="165" class="line-label" text-anchor="middle">Returns</text>
+  <path d="M 730 205 L 754 205" class="line-dashed" />
+  <text x="742" y="195" class="line-label" text-anchor="middle">Returns</text>
 
-  <!-- Data Plane Routing -->
-  <path d="M 210 345 L 265 345" class="line" />
-  <text x="237" y="335" class="line-label" text-anchor="middle">Copies</text>
+  <!-- Data Plane Routing (Y=405) -->
+  <path d="M 250 405 L 274 405" class="line" />
+  <text x="265" y="395" class="line-label" text-anchor="middle">Clones</text>
 
-  <path d="M 460 345 L 515 345" class="line" />
-  <text x="487" y="335" class="line-label" text-anchor="middle">Writes</text>
+  <path d="M 490 405 L 514 405" class="line" />
+  <text x="502" y="395" class="line-label" text-anchor="middle">Writes</text>
 
-  <!-- Cross-Plane Connectors (Vertical logic) -->
-  <path d="M 365 235 L 365 285" class="line-dashed" />
-  <text x="375" y="260" class="micro-text">Targets</text>
+  <!-- Cross-Plane Connectors -->
+  <!-- dbt Executes on Mutated Data -->
+  <path d="M 625 270 L 625 334" class="line" />
+  <text x="635" y="305" class="line-label">Transforms</text>
 
-  <path d="M 620 235 L 620 285" class="line" />
-  <text x="630" y="260" class="micro-text">Transforms</text>
-
-  <path d="M 870 285 L 870 240" class="line" />
-  <text x="880" y="265" class="micro-text">Validates</text>
+  <!-- Hash engine validates output up to the Classifier -->
+  <path d="M 865 340 L 865 276" class="line" />
+  <text x="875" y="305" class="line-label">Validates</text>
 
 </svg>
