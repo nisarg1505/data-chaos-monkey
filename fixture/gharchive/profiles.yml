@@ -10,7 +10,7 @@ gharchive:
         - json
     clone:
       type: duckdb
-      path: '/tmp/gh_clone.duckdb'
+      path: '/tmp/chaos_clone.duckdb'
       threads: 4
       extensions:
         - httpfs

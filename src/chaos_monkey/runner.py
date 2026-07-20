@@ -10,11 +10,15 @@ class Runner:
         self.dbt_dir = dbt_dir
         self.target = target
 
-    def run(self, select: str | None = None, exclude_seed: bool = True):
+    def run(
+        self,
+        select: str | None = None,
+        exclude: str | None = None,
+        exclude_seed: bool = True,
+    ):
         """Rebuild models + tests on the clone.
         select: dbt --select expression (e.g. 'stg_events+') to prune the DAG.
-                None = build everything (fallback).
-        exclude_seed: skip seeds so injected corruption in source tables survives.
+        exclude: specific model to skip so injected corruption survives.
         """
         cmd = [
             "uv",
@@ -28,8 +32,18 @@ class Runner:
         ]
         if select:
             cmd += ["--select", select]
+
+        # Build the exclusion list
+        exclusions = []
+        if exclude:
+            exclusions.append(exclude)
         if exclude_seed:
-            cmd += ["--exclude", "resource_type:seed"]
+            exclusions.append("resource_type:seed")
+
+        if exclusions:
+            # dbt accepts space-separated exclusions: --exclude raw_events resource_type:seed
+            cmd += ["--exclude", " ".join(exclusions)]
+
         subprocess.run(cmd, cwd=self.dbt_dir, capture_output=True, text=True)
         return self._parse_results()
 
