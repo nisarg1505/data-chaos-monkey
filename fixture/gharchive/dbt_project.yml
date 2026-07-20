@@ -1,0 +1,13 @@
+name: 'gharchive'
+version: '1.0.0'
+profile: 'gharchive'
+model-paths: ["models"]
+target-path: "target"
+models:
+  gharchive:
+    raw:
+      +materialized: table
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

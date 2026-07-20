@@ -1,0 +1,17 @@
+gharchive:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'gharchive.duckdb'
+      threads: 4
+      extensions:
+        - httpfs
+        - json
+    clone:
+      type: duckdb
+      path: '/tmp/gh_clone.duckdb'
+      threads: 4
+      extensions:
+        - httpfs
+        - json
