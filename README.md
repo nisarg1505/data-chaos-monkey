@@ -17,6 +17,7 @@ Traditional data testing is static—it only checks what you *thought* to test. 
 
 ## Architecture & Design
 
+```mermaid
 graph TD
     subgraph Source ["Source Database (DuckDB)"]
         A["Raw JSON & Polymorphic Structs"]
@@ -43,6 +44,7 @@ graph TD
     style CoreEngine fill:#161b22,stroke:#8957e5,stroke-width:2px,color:#c9d1d9
     style Transformation fill:#161b22,stroke:#1f6feb,stroke-width:2px,color:#c9d1d9
     style Verification fill:#161b22,stroke:#f85149,stroke-width:2px,color:#c9d1d9
+```
 
 1. Zero-Copy File Cloning: Safely isolates your source database by cloning the file state instantly before applying mutations, preventing disk bloat.
 
@@ -77,7 +79,8 @@ uv run chaos-monkey report \
   --output main.actor_stats \
   --inject-into main.raw_events
 Example Output
-Plaintext
+
+```text
                   Pipeline Resilience Report                  
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Fault                          ┃ Verdict ┃ Fix (if silent)     ┃
@@ -97,6 +100,7 @@ Plaintext
 Resilience: 8/10 faults caught
 ⚠ 1 reach output SILENTLY:
   • id (statistical_drift) → add not_null test on id
+```
 
 *Verdict Classifications*
 
