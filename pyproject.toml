@@ -1,7 +1,7 @@
 [project]
 name = "chaos-monkey"
 version = "0.1.0"
-description = "Add your description here"
+description = "Chaos Monkey for Data"
 readme = "README.md"
 authors = [
     { name = "Nisarg", email = "nisargs45@gmail.com" }
