@@ -74,7 +74,9 @@ def test_fanout_adds_rows(con):
     before = con.execute("SELECT count(*) FROM main.ev").fetchone()[0]
     get_fault("fanout").apply(con, "main.ev", "id", 0.3)
     after = con.execute("SELECT count(*) FROM main.ev").fetchone()[0]
-    assert after == before + 30
+    # severity is capped at 0.1 inside fanout to avoid doubling large tables,
+    # so 0.3 on a 100-row table duplicates 10 rows, not 30.
+    assert after == before + 10
 
 
 def test_referential_orphans_keys(con):
